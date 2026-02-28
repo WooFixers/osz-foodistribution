@@ -1,26 +1,188 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Color tokens → Tailwind utilities */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cream: var(--cream);
+  --color-warm-gray: var(--warm-gray);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Fonts */
+  --font-heading: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-nunito), system-ui, sans-serif;
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+
+  /* Custom animations */
+  --animate-fade-up: fade-up 0.8s ease-out forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom keyframes */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+
+/* ─── Light theme ─────────────────────────────────────────────── */
+:root {
+  --radius: 0.5rem;
+
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 3%);
+
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 3%);
+
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 3%);
+
+  --primary: hsl(0 100% 27.3%);
+  --primary-foreground: hsl(0 0% 100%);
+  --primary-dark: hsl(0 100% 20%);
+  --primary-light: hsl(0 60% 40%);
+
+  --secondary: hsl(0 12% 95%);
+  --secondary-foreground: hsl(0 100% 27.3%);
+
+  --muted: hsl(0 6% 94%);
+  --muted-foreground: hsl(0 0% 40%);
+
+  --accent: hsl(0 30% 92%);
+  --accent-foreground: hsl(0 100% 27.3%);
+
+  --destructive: hsl(0 84.2% 60.2%);
+
+  --border: hsl(0 8% 88%);
+  --input: hsl(0 8% 88%);
+  --ring: hsl(0 100% 27.3%);
+
+  --cream: hsl(30 50% 97%);
+  --warm-gray: hsl(20 8% 50%);
+
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(0 0% 5%);
+  --sidebar-primary: hsl(0 100% 27.3%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(0 12% 95%);
+  --sidebar-accent-foreground: hsl(0 0% 20%);
+  --sidebar-border: hsl(0 8% 88%);
+  --sidebar-ring: hsl(0 100% 27.3%);
+}
+
+/* ─── Dark theme ──────────────────────────────────────────────── */
+.dark {
+  --background: hsl(0 0% 6%);
+  --foreground: hsl(0 0% 95%);
+  --card: hsl(0 0% 9%);
+  --card-foreground: hsl(0 0% 95%);
+  --popover: hsl(0 0% 9%);
+  --popover-foreground: hsl(0 0% 95%);
+  --primary: hsl(0 100% 27.3%);
+  --primary-foreground: hsl(0 0% 100%);
+  --primary-dark: hsl(0 100% 14%);
+  --primary-light: hsl(0 60% 45%);
+  --secondary: hsl(0 10% 15%);
+  --secondary-foreground: hsl(0 0% 95%);
+  --muted: hsl(0 5% 18%);
+  --muted-foreground: hsl(0 0% 60%);
+  --accent: hsl(0 15% 18%);
+  --accent-foreground: hsl(0 0% 95%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --border: hsl(0 8% 20%);
+  --input: hsl(0 8% 20%);
+  --ring: hsl(0 100% 35%);
+  --sidebar: hsl(0 0% 8%);
+  --sidebar-foreground: hsl(0 0% 90%);
+  --sidebar-primary: hsl(0 100% 35%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(0 10% 15%);
+  --sidebar-accent-foreground: hsl(0 0% 90%);
+  --sidebar-border: hsl(0 8% 18%);
+  --sidebar-ring: hsl(0 100% 35%);
+}
+
+/* ─── Base styles ─────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-nunito), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cormorant), Georgia, serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Container: always centred + horizontal padding ─────────── */
+@utility container {
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+/* ─── Custom utilities ────────────────────────────────────────── */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light;
+  }
+  .section-padding {
+    @apply py-20 md:py-28 px-4;
+  }
+  .font-heading {
+    font-family: var(--font-cormorant), Georgia, serif;
+  }
+  .font-body {
+    font-family: var(--font-nunito), system-ui, sans-serif;
+  }
 }
