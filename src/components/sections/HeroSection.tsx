@@ -9,13 +9,13 @@ export const Header = () => (
   <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
     <div className="container mx-auto flex items-center justify-between py-4">
       <Link href="/">
-        <Image src="/assets/logo.png" alt="OSZ Food Distribution" width={120} height={40} className="h-10 w-auto" />
+        <Image src="/assets/logo.png" alt="OSZ Food Distribution — retour à l'accueil" width={120} height={40} className="h-10 w-auto" />
       </Link>
-      <nav className="hidden md:flex items-center gap-8">
+      <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">
         <Link href="/" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Accueil</Link>
         <Link href="/professionnels" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Professionnels</Link>
         <Link href="/particuliers" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Particuliers</Link>
-        <Link href="/particuliers/catalogue" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Catalogue</Link>
+        <Link href="/particuliers/commander" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Commander</Link>
       </nav>
       <div className="hidden lg:flex items-center gap-4 text-muted-foreground text-base">
         <a href="tel:0670594545" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
@@ -41,21 +41,20 @@ export const HeroSection = () => (
     <div className="relative container mx-auto py-32">
       <div className="max-w-2xl animate-fade-up">
         <p className="text-primary-foreground/70 uppercase tracking-[0.3em] text-sm font-medium mb-4">
-          Distribution alimentaire d&apos;excellence
+          Distribution de viande fraîche à Marrakech
         </p>
         <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.1] mb-6">
-          Votre partenaire<br />
-          <span className="italic font-normal">de confiance</span>
+          Votre distributeur de viande bovine et agneau à Marrakech
         </h1>
         <p className="text-lg text-primary-foreground/80 leading-relaxed mb-10 max-w-lg">
-          Spécialiste de la distribution de viandes et produits alimentaires. Qualité, traçabilité et respect des normes pour les professionnels et les particuliers.
+          Qualité professionnelle, livrée chez vous ou dans votre établissement. OSZ Food Distribution sert les particuliers et les professionnels de Marrakech depuis plus de 15 ans.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <Button size="lg" className="h-14 px-8 rounded-sm bg-primary-foreground text-primary hover:bg-primary-foreground/90" asChild>
-            <Link href="/professionnels">Espace Professionnels</Link>
+            <Link href="/particuliers">Je commande à domicile</Link>
           </Button>
           <Button variant="outline" size="lg" className="h-14 px-8 rounded-sm bg-transparent border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-            <Link href="/particuliers">Espace Particuliers</Link>
+            <Link href="/professionnels">Je suis professionnel</Link>
           </Button>
         </div>
       </div>

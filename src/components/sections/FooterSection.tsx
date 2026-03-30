@@ -10,11 +10,11 @@ const Footer = () => (
         <div>
           <div className="mb-5">
             <Link href="/">
-              <Image src="/assets/logo.png" alt="OSZ Food Distribution" width={120} height={40} className="h-10 w-auto brightness-0 invert opacity-80" />
+              <Image src="/assets/logo.png" alt="OSZ Food Distribution — retour à l'accueil" width={120} height={40} className="h-10 w-auto brightness-0 invert opacity-80" />
             </Link>
           </div>
           <p className="text-background/60 text-sm leading-relaxed">
-            Spécialiste de la distribution de viandes et produits alimentaires depuis plus de 15 ans. Qualité, traçabilité et service d&apos;excellence.
+            Distributeur de viande bovine et agneau frais à Marrakech depuis plus de 15 ans. Livraison à domicile pour les particuliers. Approvisionnement professionnel pour restaurants, hôtels et riads.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ const Footer = () => (
               { href: "/", label: "Accueil" },
               { href: "/professionnels", label: "Professionnels" },
               { href: "/particuliers", label: "Particuliers" },
-              { href: "/particuliers/catalogue", label: "Catalogue" },
+              { href: "/particuliers/commander", label: "Commander" },
             ].map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="text-background/60 hover:text-primary transition-colors flex items-center gap-1">
@@ -79,11 +79,11 @@ const Footer = () => (
       </div>
 
       <div className="border-t border-background/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-background/40">
-        <p>© 2025 OSZ Food Distribution. Tous droits réservés.</p>
+        <p>© {new Date().getFullYear()} OSZ Food Distribution. Tous droits réservés.</p>
         <div className="flex gap-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-background/60 transition-colors">Mentions légales</a>
-          <a href="#" className="hover:text-background/60 transition-colors">Politique de confidentialité</a>
-          <a href="#" className="hover:text-background/60 transition-colors">CGV</a>
+          <Link href="/mentions-legales" className="hover:text-background/60 transition-colors">Mentions légales</Link>
+          <Link href="/politique-de-confidentialite" className="hover:text-background/60 transition-colors">Politique de confidentialité</Link>
+          <Link href="/cgv" className="hover:text-background/60 transition-colors">CGV</Link>
         </div>
       </div>
     </div>

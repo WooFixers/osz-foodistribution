@@ -22,7 +22,10 @@ const QualitySection = () => (
           La sécurité alimentaire, notre engagement
         </h2>
         <p className="text-primary-foreground/70 text-lg leading-relaxed">
-          Chaque produit distribué par OSZ respecte les plus hauts standards de qualité, d&apos;hygiène et de traçabilité.
+          Chaque produit distribué par OSZ Food Distribution répond aux standards sanitaires en vigueur au Maroc. Normes HACCP appliquées à chaque étape de notre chaîne, traçabilité complète de l&apos;origine à la livraison, contrôle qualité systématique à la réception et au départ.
+        </p>
+        <p className="text-primary-foreground/70 text-lg leading-relaxed mt-4">
+          Pour nos clients professionnels (restaurants, hôtels, riads), nous fournissons sur demande toute la documentation sanitaire requise par les autorités compétentes.
         </p>
       </div>
       <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">

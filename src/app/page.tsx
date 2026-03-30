@@ -2,9 +2,18 @@ import type { Metadata } from "next";
 import { Header, HeroSection } from "@/components/sections/HeroSection";
 
 export const metadata: Metadata = {
-  title: "Accueil — Distribution alimentaire à Marrakech",
+  title: "OSZ Food Distribution — Livraison viande fraîche à Marrakech",
   description:
-    "OSZ Food Distribution : spécialiste de la distribution de viandes et produits alimentaires à Marrakech. Service aux professionnels (restaurants, hôtels) et livraison à domicile pour les particuliers.",
+    "Spécialiste de la distribution de viande bovine et agneau à Marrakech depuis plus de 15 ans. Livraison à domicile pour les particuliers et approvisionnement professionnel pour restaurants, hôtels et riads. Qualité garantie, chaîne du froid maîtrisée.",
+  openGraph: {
+    title: "OSZ Food Distribution — Livraison viande fraîche à Marrakech",
+    description:
+      "Distribution de viande bovine et agneau à Marrakech. Livraison domicile et approvisionnement pour restaurants et hôtels.",
+    url: "https://www.osz-foodistribution.ma",
+    siteName: "OSZ Food Distribution",
+    locale: "fr_MA",
+    type: "website",
+  },
   alternates: { canonical: "https://www.osz-foodistribution.ma" },
 };
 import AboutSection from "@/components/sections/AboutSection";

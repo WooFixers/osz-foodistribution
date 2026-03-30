@@ -71,9 +71,9 @@ const CatHeader = ({ cartCount, onCartOpen }: { cartCount: number; onCartOpen: (
   <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
     <div className="container mx-auto flex items-center justify-between py-4">
       <Link href="/">
-        <Image src="/assets/logo.png" alt="OSZ Food Distribution" width={120} height={40} className="h-10 w-auto" />
+        <Image src="/assets/logo.png" alt="OSZ Food Distribution — retour à l'accueil" width={120} height={40} className="h-10 w-auto" />
       </Link>
-      <nav className="hidden md:flex items-center gap-6 text-base font-medium">
+      <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-6 text-base font-medium">
         <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">Accueil</Link>
         <Link href="/professionnels" className="text-muted-foreground hover:text-foreground transition-colors">Professionnels</Link>
         <Link href="/particuliers" className="text-muted-foreground hover:text-foreground transition-colors">Particuliers</Link>
@@ -434,8 +434,8 @@ export default function CataloguePage() {
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-foreground font-medium">Catalogue</span>
           </nav>
-          <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-2">Nos Produits</h1>
-          <p className="text-muted-foreground max-w-xl">Des produits frais et de qualité professionnelle, sélectionnés avec soin et livrés à domicile à Marrakech.</p>
+          <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-2">Commander votre viande fraîche à Marrakech</h1>
+          <p className="text-muted-foreground max-w-xl">Sélectionnez vos produits et passez commande via WhatsApp. Livraison réfrigérée à domicile sur tout Marrakech — délai 48h maximum.</p>
         </div>
       </section>
 
@@ -524,6 +524,21 @@ export default function CataloguePage() {
                   </div>
                 )}
               </>
+            ) : products.length === 0 ? (
+              <div className="text-center py-20">
+                <Package className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
+                <h3 className="font-heading text-xl font-semibold text-foreground mb-2">Catalogue en cours de mise à jour</h3>
+                <p className="text-muted-foreground mb-2">Notre catalogue est en cours de mise à jour.</p>
+                <p className="text-muted-foreground mb-6">Contactez-nous directement pour passer commande :</p>
+                <a
+                  href="https://wa.me/212670594545?text=Bonjour%2C%20je%20voudrais%20commander%20de%20la%20viande%20fra%C3%AEche%20%C3%A0%20Marrakech."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" /> Commander via WhatsApp
+                </a>
+              </div>
             ) : (
               <div className="text-center py-20">
                 <Package className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />

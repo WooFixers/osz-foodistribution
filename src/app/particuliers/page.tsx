@@ -3,9 +3,18 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Commande en ligne — Viandes & produits frais à Marrakech",
+  title: "Livraison viande domicile Marrakech — Bœuf & Agneau frais | OSZ",
   description:
-    "Commandez en ligne vos viandes, légumes frais et charcuteries. Livraison à domicile à Marrakech (Guéliz, Hivernage, Palmeraie, Targa). Qualité professionnelle pour les particuliers.",
+    "Commandez votre viande bovine et agneau frais en ligne. Livraison à domicile à Marrakech : Guéliz, Hivernage, Palmeraie, Targa, Route de l'Ourika. Commande simple via WhatsApp, délai 48h max. OSZ Food Distribution.",
+  openGraph: {
+    title: "Livraison viande à domicile Marrakech | OSZ Food Distribution",
+    description:
+      "Bœuf et agneau frais livrés chez vous à Marrakech. Qualité professionnelle accessible aux particuliers. Commande via WhatsApp.",
+    url: "https://www.osz-foodistribution.ma/particuliers",
+    siteName: "OSZ Food Distribution",
+    locale: "fr_MA",
+    type: "website",
+  },
   alternates: { canonical: "https://www.osz-foodistribution.ma/particuliers" },
 };
 import {
@@ -23,13 +32,13 @@ const PartHeader = () => (
   <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
     <div className="container mx-auto flex items-center justify-between py-4">
       <Link href="/">
-        <Image src="/assets/logo.png" alt="OSZ Food Distribution" width={120} height={40} className="h-10 w-auto" />
+        <Image src="/assets/logo.png" alt="OSZ Food Distribution — retour à l'accueil" width={120} height={40} className="h-10 w-auto" />
       </Link>
-      <nav className="hidden md:flex items-center gap-8">
+      <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">
         <Link href="/" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Accueil</Link>
         <Link href="/professionnels" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Professionnels</Link>
         <Link href="/particuliers" className="text-foreground font-semibold text-base transition-colors">Particuliers</Link>
-        <Link href="/particuliers/catalogue" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Catalogue</Link>
+        <Link href="/particuliers/commander" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Commander</Link>
       </nav>
       <div className="hidden lg:flex items-center gap-4 text-muted-foreground text-base">
         <a href="tel:0670594545" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
@@ -52,19 +61,19 @@ const PartHero = () => (
         <ArrowLeft className="w-4 h-4" /> Retour à l&apos;accueil
       </Link>
       <div className="max-w-2xl animate-fade-up">
-        <p className="text-primary-foreground/70 uppercase tracking-[0.3em] text-sm font-medium mb-4">Boutique en ligne — Marrakech</p>
+        <p className="text-primary-foreground/70 uppercase tracking-[0.3em] text-sm font-medium mb-4">Livraison viande domicile — Marrakech</p>
         <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.1] mb-6">
-          La qualité pro<br /><span className="italic font-normal">livrée chez vous</span>
+          Viande fraîche livrée à domicile à Marrakech
         </h1>
         <p className="text-lg text-primary-foreground/80 leading-relaxed mb-10 max-w-lg">
-          Viandes premium, légumes frais et charcuterie artisanale — commandez en ligne et recevez des produits d&apos;exception directement à votre domicile à Marrakech.
+          Bœuf et agneau de qualité professionnelle, livrés directement chez vous où que vous soyez à Marrakech. Commande rapide via WhatsApp, livraison réfrigérée sous 48h.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <Button size="lg" className="h-14 px-8 rounded-sm bg-primary-foreground text-primary hover:bg-primary-foreground/90" asChild>
-            <a href="#produits">Commander en ligne</a>
+            <a href="https://wa.me/212670594545" target="_blank" rel="noopener noreferrer">Commander maintenant</a>
           </Button>
           <Button variant="outline" size="lg" className="h-14 px-8 rounded-sm border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-            <Link href="/particuliers/catalogue">Voir les produits</Link>
+            <Link href="/particuliers/commander">Voir nos produits</Link>
           </Button>
         </div>
       </div>
@@ -76,19 +85,28 @@ const PartHero = () => (
 /* ─── CATEGORIES ─── */
 const categories = [
   {
-    icon: "🥩", title: "Viandes",
-    desc: "Produits frais de qualité professionnelle, rigoureusement sélectionnés. Différentes découpes disponibles pour toutes vos recettes.",
-    items: ["Bœuf premium", "Agneau", "Volaille fermière", "Veau"],
+    icon: "🥩", title: "Viande de bœuf & agneau",
+    desc: "Entrecôte, filet, côte à l'os, gigot, épaule — notre sélection de viande bovine et d'agneau frais, découpée selon vos préférences.",
+    items: ["Entrecôte de bœuf — 189 MAD/kg", "Gigot d'agneau entier", "Épaule d'agneau", "Agneau entier (mechoui) — prix sur demande"],
+    cta: "Commander via WhatsApp",
+    ctaHref: "https://wa.me/212670594545",
+    ctaExternal: true,
   },
   {
-    icon: "🥕", title: "Légumes",
-    desc: "Produits frais et soigneusement sélectionnés pour une qualité constante. Idéal pour une cuisine quotidienne ou gastronomique.",
+    icon: "🥕", title: "Légumes frais de saison",
+    desc: "Une sélection de légumes frais pour compléter vos commandes de viande. Produits du marché, choisis pour leur fraîcheur et leur qualité.",
     items: ["Légumes de saison", "Herbes fraîches", "Légumes racines", "Crudités"],
+    cta: "Nous demander la disponibilité",
+    ctaHref: "https://wa.me/212670594545",
+    ctaExternal: true,
   },
   {
     icon: "🍖", title: "Charcuterie",
     desc: "Produits artisanaux et savoureux, sélection premium. Des saveurs authentiques pour vos apéritifs et repas.",
     items: ["Saucissons", "Jambons", "Terrines", "Spécialités"],
+    cta: "Voir la sélection",
+    ctaHref: "/particuliers/commander",
+    ctaExternal: false,
   },
 ];
 
@@ -98,10 +116,10 @@ const CategoriesSection = () => (
       <div className="text-center max-w-2xl mx-auto mb-16">
         <p className="text-primary uppercase tracking-[0.25em] text-sm font-semibold mb-3">Nos Produits</p>
         <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-5">
-          Des produits d&apos;exception à portée de clic
+          Viande bovine et agneau frais — Livraison à domicile
         </h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Découvrez notre sélection de viandes, légumes et charcuterie de qualité professionnelle, disponible en ligne pour les particuliers à Marrakech.
+          Notre sélection est centrée sur deux familles de produits : la viande de bœuf et l&apos;agneau frais. Des pièces sélectionnées chez des éleveurs partenaires, découpées sur commande pour garantir la fraîcheur maximale à la livraison.
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
@@ -121,9 +139,15 @@ const CategoriesSection = () => (
             </div>
             <div className="px-8 pb-8">
               <Button className="w-full group-hover:bg-primary-dark transition-colors rounded-sm" asChild>
-                <Link href="/particuliers/catalogue">
-                  Voir la sélection <ChevronRight className="w-4 h-4 ml-1" />
-                </Link>
+                {cat.ctaExternal ? (
+                  <a href={cat.ctaHref} target="_blank" rel="noopener noreferrer">
+                    {cat.cta} <ChevronRight className="w-4 h-4 ml-1" />
+                  </a>
+                ) : (
+                  <Link href={cat.ctaHref}>
+                    {cat.cta} <ChevronRight className="w-4 h-4 ml-1" />
+                  </Link>
+                )}
               </Button>
             </div>
           </div>
@@ -135,11 +159,11 @@ const CategoriesSection = () => (
 
 /* ─── ADVANTAGES ─── */
 const shopAdvantages = [
-  { icon: Award, title: "Qualité professionnelle", desc: "Les mêmes produits que ceux servis dans les grands restaurants." },
-  { icon: Leaf, title: "Produits frais sélectionnés", desc: "Une sélection rigoureuse pour garantir fraîcheur et saveur." },
-  { icon: Smartphone, title: "Commande simple", desc: "Passez commande en quelques clics depuis votre téléphone." },
-  { icon: Truck, title: "Livraison à domicile", desc: "Livraison rapide et fiable partout à Marrakech." },
-  { icon: Timer, title: "Service réactif", desc: "Une équipe à votre écoute pour toute question ou demande." },
+  { icon: Award, title: "Qualité identique aux restaurants", desc: "Le même bœuf et le même agneau servis dans les restaurants et hôtels de Marrakech, maintenant accessible aux particuliers." },
+  { icon: Leaf, title: "Fraîcheur garantie", desc: "Découpe à la commande, emballage isotherme, livraison réfrigérée. Votre viande arrive dans les meilleures conditions." },
+  { icon: Smartphone, title: "Commande simple sur WhatsApp", desc: "Envoyez votre commande au 06 70 59 45 45. Confirmation sous 2h, livraison dans les 48h." },
+  { icon: Truck, title: "Livraison sur tout Marrakech", desc: "Guéliz, Hivernage, Palmeraie, Médina, Targa, Route de l'Ourika — nous livrons partout à Marrakech." },
+  { icon: Timer, title: "Paiement à la livraison", desc: "Pas de prépaiement en ligne. Vous payez à la réception de votre commande." },
 ];
 
 const ShopAdvantagesSection = () => (
@@ -180,7 +204,7 @@ const DeliverySection = () => (
           <p className="text-primary uppercase tracking-[0.25em] text-sm font-semibold mb-3">Livraison &amp; Service</p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-5">Livré chez vous à Marrakech</h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-            Nous livrons vos produits frais directement à votre domicile, avec un soin particulier apporté à la conservation et à la ponctualité.
+            Nous livrons votre viande fraîche directement à votre domicile à Marrakech, dans un emballage réfrigéré isotherme qui maintient la chaîne du froid de notre entrepôt jusqu&apos;à votre cuisine. Délai maximum : 48h après confirmation de votre commande. Livraison offerte à partir de 250 MAD d&apos;achat.
           </p>
           <div className="space-y-6">
             {deliveryItems.map((item) => (
@@ -258,9 +282,9 @@ const HowItWorks = () => (
       </div>
       <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
         {[
-          { step: "01", title: "Choisissez vos produits", desc: "Parcourez notre catalogue et ajoutez vos produits préférés à votre panier.", icon: ShoppingCart },
-          { step: "02", title: "Commandez en ligne", desc: "Validez votre commande en quelques clics. Paiement simple et sécurisé.", icon: Smartphone },
-          { step: "03", title: "Livraison à domicile", desc: "Recevez vos produits frais directement chez vous à Marrakech.", icon: Truck },
+          { step: "01", title: "Choisissez votre viande", desc: "Parcourez notre sélection de bœuf et d'agneau frais. Précisez la découpe et la quantité souhaitée. Nos prix sont affichés dans notre catalogue, ou demandez un devis sur WhatsApp.", icon: ShoppingCart },
+          { step: "02", title: "Envoyez votre commande sur WhatsApp", desc: "Écrivez-nous au 06 70 59 45 45. Notre équipe vous confirme la disponibilité, le prix final et le créneau de livraison dans les 2 heures. Paiement à la livraison.", icon: Smartphone },
+          { step: "03", title: "Réceptionnez votre viande fraîche", desc: "Votre commande est livrée dans un emballage isotherme réfrigéré. Livraison 7j/7, de 8h à 20h, sur tout Marrakech. Délai : 48h maximum.", icon: Truck },
         ].map((s) => (
           <div key={s.step} className="text-center relative">
             <div className="w-20 h-20 mx-auto mb-5 rounded-full bg-primary/10 flex items-center justify-center">
@@ -278,7 +302,7 @@ const HowItWorks = () => (
 
 /* ─── FEATURED PRODUCTS ─── */
 const featuredProducts = [
-  { name: "Entrecôte de bœuf", tag: "Populaire", price: "189 MAD/kg" },
+  { name: "Entrecôte de bœuf fraîche", tag: "Populaire", price: "189 MAD/kg" },
   { name: "Filet d'agneau", tag: "Premium", price: "249 MAD/kg" },
   { name: "Poulet fermier entier", tag: "Nouveau", price: "69 MAD/kg" },
   { name: "Assortiment charcuterie", tag: "Offre spéciale", price: "149 MAD" },
@@ -303,7 +327,7 @@ const FeaturedSection = () => (
               <div className="flex items-center justify-between">
                 <span className="font-heading text-xl font-bold text-primary">{p.price}</span>
                 <Button size="sm" className="rounded-sm" asChild>
-                  <Link href="/particuliers/catalogue">
+                  <Link href="/particuliers/commander">
                     <ShoppingCart className="w-4 h-4 mr-1" /> Voir
                   </Link>
                 </Button>
@@ -318,9 +342,9 @@ const FeaturedSection = () => (
 
 /* ─── TESTIMONIALS ─── */
 const testimonials = [
-  { name: "Fatima Z.", text: "Des produits d'une fraîcheur exceptionnelle. La livraison est toujours ponctuelle. Je recommande vivement !", stars: 5 },
-  { name: "Youssef B.", text: "Enfin de la viande de qualité professionnelle accessible aux particuliers. Le service est irréprochable.", stars: 5 },
-  { name: "Sarah M.", text: "La commande en ligne est très simple et les produits sont toujours impeccables. Un vrai bonheur !", stars: 5 },
+  { name: "Fatima Z.", role: "Guéliz", text: "La viande arrive toujours fraîche et bien emballée. Je commande toutes les semaines pour ma famille à Guéliz — c'est devenu un réflexe.", stars: 5 },
+  { name: "Youssef B.", role: "Hivernage", text: "Enfin une vraie qualité de bœuf accessible sans aller au marché. Le gigot d'agneau pour notre déjeuner du vendredi était exceptionnel.", stars: 5 },
+  { name: "Sarah M.", role: "Palmeraie", text: "Simple, rapide, frais. La commande WhatsApp fonctionne parfaitement et la livraison est toujours dans les délais. Je recommande.", stars: 5 },
 ];
 
 const PartTestimonialsSection = () => (
@@ -341,6 +365,7 @@ const PartTestimonialsSection = () => (
             </div>
             <p className="text-foreground leading-relaxed mb-6 italic">&ldquo;{t.text}&rdquo;</p>
             <p className="font-semibold text-foreground">{t.name}</p>
+            <p className="text-muted-foreground text-sm">{t.role}</p>
           </div>
         ))}
       </div>
@@ -355,9 +380,12 @@ const LocalPresence = () => (
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <p className="text-primary uppercase tracking-[0.25em] text-sm font-semibold mb-3">Présence locale</p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-5">Votre partenaire à Marrakech</h2>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-5">Livraison viande dans tout Marrakech</h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-            Implantés au cœur de Marrakech, nous connaissons parfaitement le marché local et les attentes de nos clients.
+            Implantés à Marrakech depuis plus de 15 ans, nous connaissons la ville et ses quartiers. Notre zone de livraison couvre Marrakech centre, Guéliz, l&apos;Hivernage, la Palmeraie, Targa et la Route de l&apos;Ourika.
+          </p>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+            Vous n&apos;êtes pas sûr d&apos;être dans notre zone ? Contactez-nous sur WhatsApp — nous vous confirmons la faisabilité en moins de 2 heures.
           </p>
           <div className="space-y-4">
             {[
@@ -402,10 +430,10 @@ const CTASection = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Button size="lg" className="h-14 px-8 rounded-sm bg-primary-foreground text-primary hover:bg-primary-foreground/90" asChild>
-            <Link href="/particuliers/catalogue">Commander maintenant</Link>
+            <Link href="/particuliers/commander">Commander maintenant</Link>
           </Button>
           <Button variant="outline" size="lg" className="h-14 px-8 rounded-sm border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-            <Link href="/particuliers/catalogue">Voir le catalogue</Link>
+            <Link href="/particuliers/commander">Voir le catalogue</Link>
           </Button>
         </div>
         <div className="flex flex-col sm:flex-row gap-8 justify-center text-primary-foreground/70 text-sm">
@@ -428,7 +456,7 @@ const PartFooter = () => (
             <Link href="/"><Image src="/assets/logo.png" alt="OSZ Food Distribution" width={120} height={40} className="h-10 w-auto brightness-0 invert opacity-80" /></Link>
           </div>
           <p className="text-background/60 text-sm leading-relaxed">
-            Votre boutique en ligne de produits alimentaires premium à Marrakech. Qualité professionnelle, livraison à domicile.
+            Votre spécialiste de la livraison de viande fraîche à domicile à Marrakech.
           </p>
         </div>
         <div>
@@ -466,11 +494,11 @@ const PartFooter = () => (
         </div>
       </div>
       <div className="border-t border-background/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-background/40">
-        <p>© 2025 OSZ Food Distribution. Tous droits réservés.</p>
+        <p>© {new Date().getFullYear()} OSZ Food Distribution. Tous droits réservés.</p>
         <div className="flex gap-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-background/60 transition-colors">Mentions légales</a>
-          <a href="#" className="hover:text-background/60 transition-colors">Politique de confidentialité</a>
-          <a href="#" className="hover:text-background/60 transition-colors">CGV</a>
+          <Link href="/mentions-legales" className="hover:text-background/60 transition-colors">Mentions légales</Link>
+          <Link href="/politique-de-confidentialite" className="hover:text-background/60 transition-colors">Politique de confidentialité</Link>
+          <Link href="/cgv" className="hover:text-background/60 transition-colors">CGV</Link>
         </div>
       </div>
     </div>

@@ -2,21 +2,21 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Marc D.",
-    role: "Chef de cuisine, Restaurant Le Comptoir",
-    text: "OSZ Food Distribution est notre fournisseur depuis 5 ans. La qualité des viandes est irréprochable et les livraisons toujours ponctuelles.",
+    name: "Chef de cuisine",
+    role: "Restaurant, Marrakech",
+    text: "OSZ est notre fournisseur de viande depuis 5 ans. La qualité du bœuf et de l'agneau est constante, les livraisons toujours à l'heure. C'est exactement ce dont une cuisine professionnelle a besoin.",
     stars: 5,
   },
   {
-    name: "Sophie L.",
-    role: "Directrice, Hôtel Les Terrasses",
-    text: "Un partenaire fiable et professionnel. Leur réactivité et la fraîcheur de leurs produits font la différence au quotidien.",
+    name: "Directeur F&B",
+    role: "Hôtel, Palmeraie Marrakech",
+    text: "Fiabilité, qualité et réactivité. Trois mots qui résument notre collaboration avec OSZ. Depuis 8 ans, ils approvisionnent notre établissement sans jamais nous faire défaut.",
     stars: 5,
   },
   {
-    name: "Karim B.",
-    role: "Particulier",
-    text: "Enfin un accès à des produits de qualité restaurant ! La commande est simple et les produits arrivent toujours frais. Je recommande vivement.",
+    name: "Particulier",
+    role: "Guéliz",
+    text: "Je commande ma viande chez OSZ depuis que je les connais. La fraîcheur est irréprochable et le service WhatsApp est très pratique. Je recommande à tous mes voisins de Guéliz.",
     stars: 5,
   },
 ];
