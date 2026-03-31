@@ -6,6 +6,7 @@ export type SubmissionStatus = "new" | "read" | "replied";
 
 export interface Product {
   id: string;
+  slug: string;
   name: string;
   description: string | null;
   long_description: string | null;

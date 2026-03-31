@@ -12,7 +12,6 @@ import {
 import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useCart } from "@/hooks/use-cart";
 import CartDrawer from "@/components/CartDrawer";
 import AccountButton from "@/components/AccountButton";
@@ -20,6 +19,7 @@ import AccountButton from "@/components/AccountButton";
 /* ─── TYPES ─── */
 export interface Product {
   id: string;
+  slug: string;
   name: string;
   description: string | null;
   long_description: string | null;
@@ -305,60 +305,52 @@ export default function ProductDetailClient({
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="mt-12 lg:mt-16">
-          <Tabs defaultValue="description">
-            <TabsList className="w-full sm:w-auto">
-              <TabsTrigger value="description">Description</TabsTrigger>
-              <TabsTrigger value="details">Informations</TabsTrigger>
-              <TabsTrigger value="preparation">Préparation</TabsTrigger>
-            </TabsList>
+        {/* Description */}
+        {(product.long_description ?? product.description) && (
+          <div className="mt-12 lg:mt-16 max-w-2xl">
+            <h2 className="font-heading text-xl font-bold text-foreground mb-4">Description</h2>
+            <p className="text-muted-foreground leading-relaxed text-base">
+              {product.long_description ?? product.description}
+            </p>
+          </div>
+        )}
 
-            <TabsContent value="description" className="mt-6">
-              <div className="max-w-2xl">
-                <p className="text-muted-foreground leading-relaxed text-base">
-                  {product.long_description ?? product.description}
-                </p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="details" className="mt-6">
-              <div className="max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: Package,   label: "Conditionnement", value: product.weight },
-                  { icon: MapPin,    label: "Origine",         value: product.origin },
-                  { icon: Snowflake, label: "Conservation",    value: product.storage_instructions },
-                  { icon: Info,      label: "Catégorie",       value: CATEGORY_LABELS[product.category] },
-                ].filter(({ value }) => value).map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="flex items-start gap-3 p-4 rounded-lg bg-secondary">
-                    <Icon className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    <div>
-                      <p className="text-xs font-semibold text-foreground uppercase tracking-wide">{label}</p>
-                      <p className="text-sm text-muted-foreground mt-0.5">{value}</p>
-                    </div>
+        {/* Informations */}
+        {[product.weight, product.origin, product.storage_instructions].some(Boolean) && (
+          <div className="mt-10 max-w-2xl">
+            <h2 className="font-heading text-xl font-bold text-foreground mb-4">Informations</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { icon: Package,   label: "Conditionnement", value: product.weight },
+                { icon: MapPin,    label: "Origine",         value: product.origin },
+                { icon: Snowflake, label: "Conservation",    value: product.storage_instructions },
+                { icon: Info,      label: "Catégorie",       value: CATEGORY_LABELS[product.category] },
+              ].filter(({ value }) => value).map(({ icon: Icon, label, value }) => (
+                <div key={label} className="flex items-start gap-3 p-4 rounded-lg bg-secondary">
+                  <Icon className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                  <div>
+                    <p className="text-xs font-semibold text-foreground uppercase tracking-wide">{label}</p>
+                    <p className="text-sm text-muted-foreground mt-0.5">{value}</p>
                   </div>
-                ))}
-              </div>
-            </TabsContent>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-            <TabsContent value="preparation" className="mt-6">
-              <div className="max-w-2xl">
-                <h3 className="font-heading text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
-                  <UtensilsCrossed className="w-5 h-5 text-primary" /> Suggestions de préparation
-                </h3>
-                {product.suggestions?.length ? (
-                  <div className="flex flex-wrap gap-2">
-                    {product.suggestions.map((s) => (
-                      <Badge key={s} variant="outline" className="text-sm px-3 py-1.5">{s}</Badge>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-muted-foreground text-sm">Aucune suggestion disponible.</p>
-                )}
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
+        {/* Préparation */}
+        {product.suggestions?.length > 0 && (
+          <div className="mt-10 max-w-2xl">
+            <h2 className="font-heading text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+              <UtensilsCrossed className="w-5 h-5 text-primary" /> Suggestions de préparation
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {product.suggestions.map((s) => (
+                <Badge key={s} variant="outline" className="text-sm px-3 py-1.5">{s}</Badge>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Related Products */}
         {related.length > 0 && (
@@ -369,7 +361,7 @@ export default function ProductDetailClient({
                 const rpBadge = rp.badge ? BADGE_MAP[rp.badge] : null;
                 const rpImage = rp.images?.[0] ?? "/assets/placeholder.jpg";
                 return (
-                  <Link key={rp.id} href={`/particuliers/produit/${rp.id}`} className="group bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-all duration-300">
+                  <Link key={rp.id} href={`/particuliers/produit/${rp.slug}`} className="group bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-all duration-300">
                     <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                       <Image src={rpImage} alt={rp.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
                       {rpBadge && (

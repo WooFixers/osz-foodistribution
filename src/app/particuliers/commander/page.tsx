@@ -29,6 +29,7 @@ import AccountButton from "@/components/AccountButton";
 /* ─── TYPES ─── */
 interface Product {
   id: string;
+  slug: string;
   name: string;
   description: string | null;
   price: number;
@@ -206,7 +207,7 @@ const ProductCard = ({ product, onAdd }: { product: Product; onAdd: (product: Pr
 
   return (
     <div className="group bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-all duration-300">
-      <Link href={`/particuliers/produit/${product.id}`} className="block">
+      <Link href={`/particuliers/produit/${product.slug}`} className="block">
         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
           <Image
             src={image}
@@ -341,7 +342,7 @@ export default function CataloguePage() {
       const supabase = createClient();
       const { data, error } = await supabase
         .from("products")
-        .select("id, name, description, price, unit, category, type, format, in_stock, badge, images, rating")
+        .select("id, slug, name, description, price, unit, category, type, format, in_stock, badge, images, rating")
         .order("sort_order", { ascending: true });
       if (!error && data) setProducts(data as Product[]);
       setLoading(false);

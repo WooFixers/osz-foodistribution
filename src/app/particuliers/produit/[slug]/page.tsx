@@ -4,14 +4,14 @@ import { createClient } from "@/lib/supabase/server";
 import ProductDetailClient, { type Product } from "@/components/ProductDetailClient";
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const { id } = await params;
+  const { slug } = await params;
   const supabase = await createClient();
   const { data: product } = await supabase
     .from("products")
     .select("name, description")
-    .eq("id", id)
+    .eq("slug", slug)
     .single();
 
   if (!product) {
@@ -24,7 +24,7 @@ export async function generateMetadata(
       product.description ??
       `Commandez ${product.name} en ligne. Livraison fraîche à domicile à Marrakech.`,
     alternates: {
-      canonical: `https://www.osz-foodistribution.ma/particuliers/produit/${id}`,
+      canonical: `https://www.osz-foodistribution.ma/particuliers/produit/${slug}`,
     },
     openGraph: {
       title: `${product.name} | OSZ Food Distribution`,
@@ -36,15 +36,15 @@ export async function generateMetadata(
 }
 
 export default async function ProductDetailPage(
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { id } = await params;
+  const { slug } = await params;
   const supabase = await createClient();
 
   const { data: product, error } = await supabase
     .from("products")
-    .select("id, name, description, long_description, price, unit, category, in_stock, badge, images, rating, origin, weight, storage_instructions, suggestions")
-    .eq("id", id)
+    .select("id, slug, name, description, long_description, price, unit, category, in_stock, badge, images, rating, origin, weight, storage_instructions, suggestions")
+    .eq("slug", slug)
     .single();
 
   if (error || !product) {
@@ -53,9 +53,9 @@ export default async function ProductDetailPage(
 
   const { data: related } = await supabase
     .from("products")
-    .select("id, name, description, price, unit, category, in_stock, badge, images, rating")
+    .select("id, slug, name, description, price, unit, category, in_stock, badge, images, rating")
     .eq("category", product.category)
-    .neq("id", id)
+    .neq("id", product.id)
     .limit(4);
 
   return (
