@@ -59,7 +59,7 @@ const Header = ({ cartCount, onCartOpen }: { cartCount: number; onCartOpen: () =
         <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">Accueil</Link>
         <Link href="/professionnels" className="text-muted-foreground hover:text-foreground transition-colors">Professionnels</Link>
         <Link href="/particuliers" className="text-muted-foreground hover:text-foreground transition-colors">Particuliers</Link>
-        <Link href="/particuliers/catalogue" className="text-muted-foreground hover:text-foreground transition-colors">Catalogue</Link>
+        <Link href="/particuliers/commander" className="text-muted-foreground hover:text-foreground transition-colors">Commander</Link>
       </nav>
       <div className="flex items-center gap-3">
         <a href="tel:0670594545" className="hidden lg:flex items-center gap-1.5 text-muted-foreground text-sm hover:text-foreground transition-colors">
@@ -163,7 +163,7 @@ export default function ProductDetailClient({
             <ChevronRight className="w-3.5 h-3.5" />
             <Link href="/particuliers" className="hover:text-foreground transition-colors">Particuliers</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <Link href="/particuliers/catalogue" className="hover:text-foreground transition-colors">Catalogue</Link>
+            <Link href="/particuliers/commander" className="hover:text-foreground transition-colors">Commander</Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-foreground font-medium">{product.name}</span>
           </nav>

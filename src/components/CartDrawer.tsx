@@ -11,7 +11,7 @@ import {
   ShoppingCart, Minus, Plus, Trash2,
   ArrowLeft, ChevronRight, Package,
   Truck, MapPin, Phone, Clock, CheckCircle2,
-  Navigation, Loader2, AlertCircle, CalendarDays,
+  Navigation, Loader2, AlertCircle,
   UserCheck, LogIn,
 } from "lucide-react";
 import {
@@ -28,29 +28,13 @@ import { Separator } from "@/components/ui/separator";
 import { createClient } from "@/lib/supabase/client";
 import type { CartItem } from "@/hooks/use-cart";
 
-/* ─── Date helpers ─── */
-function toDateInput(d: Date) { return d.toISOString().split("T")[0]; }
-function getMinDate() { return toDateInput(new Date()); }
-function getMaxDate() {
-  const d = new Date(); d.setDate(d.getDate() + 3); return toDateInput(d);
-}
-
 /* ─── Order schema ─── */
 const orderSchema = z.object({
-  nom:           z.string().min(2, "Nom requis"),
-  telephone:     z.string().min(8, "Téléphone requis"),
-  adresse:       z.string().min(5, "Adresse requise"),
-  creneau:       z.string().min(1, "Créneau requis"),
-  creneau_date:  z.string().optional(),
-  creneau_time:  z.string().optional(),
-  notes:         z.string().optional(),
-}).superRefine((data, ctx) => {
-  if (data.creneau === "personnalise") {
-    if (!data.creneau_date)
-      ctx.addIssue({ code: "custom", message: "Date requise", path: ["creneau_date"] });
-    if (!data.creneau_time)
-      ctx.addIssue({ code: "custom", message: "Heure requise", path: ["creneau_time"] });
-  }
+  nom:       z.string().min(2, "Nom requis"),
+  telephone: z.string().min(8, "Téléphone requis"),
+  adresse:   z.string().min(5, "Adresse requise"),
+  creneau:   z.string().min(1, "Créneau requis"),
+  notes:     z.string().optional(),
 });
 type OrderValues = z.infer<typeof orderSchema>;
 
@@ -65,10 +49,9 @@ type SignupValues = z.infer<typeof signupSchema>;
 interface GeoLocation { address: string; lat: number; lng: number; }
 
 const CRENEAUX = [
-  { value: "matin",        label: "Matin (11h – 14h)" },
-  { value: "apres-midi",   label: "Après-midi (14h – 17h)" },
-  { value: "soir",         label: "Soir (17h – 19h)" },
-  { value: "personnalise", label: "📅 Choisir une date et heure" },
+  { value: "matin",      label: "Matin (11h – 14h)" },
+  { value: "apres-midi", label: "Après-midi (14h – 17h)" },
+  { value: "soir",       label: "Soir (17h – 19h)" },
 ];
 
 interface CartDrawerProps {
@@ -117,8 +100,7 @@ export default function CartDrawer({
   /* ─── Order form ─── */
   const orderForm = useForm<OrderValues>({ resolver: zodResolver(orderSchema) as any });
   const { register, handleSubmit, setValue, watch, reset, formState: { errors, isSubmitting } } = orderForm;
-  const creneau  = watch("creneau");
-  const isCustom = creneau === "personnalise";
+  const creneau = watch("creneau");
 
   /* ─── Post-order signup form ─── */
   const signupForm = useForm<SignupValues>({ resolver: zodResolver(signupSchema) as any });
@@ -159,13 +141,7 @@ export default function CartDrawer({
 
   /* ─── Order submit ─── */
   const onSubmit = async (values: OrderValues) => {
-    let creneauStr = CRENEAUX.find((c) => c.value === values.creneau)?.label ?? values.creneau;
-    if (isCustom && values.creneau_date && values.creneau_time) {
-      const dateStr = new Date(values.creneau_date).toLocaleDateString("fr-FR", {
-        weekday: "long", day: "numeric", month: "long",
-      });
-      creneauStr = `${dateStr} à ${values.creneau_time}`;
-    }
+    const creneauStr = CRENEAUX.find((c) => c.value === values.creneau)?.label ?? values.creneau;
     try {
       const res = await fetch("/api/order", {
         method: "POST",
@@ -401,41 +377,23 @@ export default function CartDrawer({
                 </div>
 
                 {/* ─── Créneau ─── */}
-                <div className="space-y-3">
-                  <div>
-                    <Label className="text-sm font-medium">Créneau de livraison *</Label>
-                    <Select onValueChange={(v) => { setValue("creneau", v); setValue("creneau_date", ""); setValue("creneau_time", ""); }} value={creneau}>
-                      <SelectTrigger className="mt-1">
-                        <SelectValue placeholder="Choisir un créneau" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {CRENEAUX.map((c) => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
-                      </SelectContent>
-                    </Select>
-                    {errors.creneau && <p className="text-xs text-destructive mt-1">{errors.creneau.message}</p>}
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Créneau de livraison *</Label>
+                  <Select onValueChange={(v) => setValue("creneau", v)} value={creneau}>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="Choisir un créneau" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {CRENEAUX.map((c) => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                  {errors.creneau && <p className="text-xs text-destructive mt-1">{errors.creneau.message}</p>}
+                  <div className="flex items-start gap-2 p-2.5 rounded-lg bg-secondary border border-border">
+                    <Clock className="w-3.5 h-3.5 text-muted-foreground shrink-0 mt-0.5" />
+                    <p className="text-[11px] text-muted-foreground leading-snug">
+                      Toute commande passée après 13h sera livrée le lendemain.
+                    </p>
                   </div>
-
-                  {isCustom && (
-                    <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-secondary border border-border">
-                      <div>
-                        <Label htmlFor="creneau_date" className="text-xs font-medium flex items-center gap-1">
-                          <CalendarDays className="w-3 h-3" /> Date *
-                        </Label>
-                        <Input id="creneau_date" type="date" min={getMinDate()} max={getMaxDate()} className="mt-1 text-sm" {...register("creneau_date")} />
-                        {errors.creneau_date && <p className="text-[11px] text-destructive mt-1">{errors.creneau_date.message}</p>}
-                      </div>
-                      <div>
-                        <Label htmlFor="creneau_time" className="text-xs font-medium flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> Heure *
-                        </Label>
-                        <Input id="creneau_time" type="time" min="11:00" max="19:00" className="mt-1 text-sm" {...register("creneau_time")} />
-                        {errors.creneau_time && <p className="text-[11px] text-destructive mt-1">{errors.creneau_time.message}</p>}
-                      </div>
-                      <p className="col-span-2 text-[11px] text-muted-foreground">
-                        Disponible aujourd'hui jusqu'à dans 3 jours, entre 11h et 19h.
-                      </p>
-                    </div>
-                  )}
                 </div>
 
                 {/* ─── Notes ─── */}

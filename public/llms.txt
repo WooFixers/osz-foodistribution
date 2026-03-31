@@ -1,0 +1,37 @@
+# OSZ Food Distribution — llms.txt
+# https://llmstxt.org
+
+> OSZ Food Distribution est un spécialiste de la distribution de viandes et produits alimentaires premium à Marrakech, Maroc. L'entreprise propose des services de livraison à domicile pour les particuliers et une offre dédiée aux professionnels de la restauration (hôtels, restaurants, traiteurs).
+
+## À propos
+
+OSZ Food Distribution sélectionne et distribue des viandes fraîches, charcuterie et légumes de qualité. Basée à Marrakech, l'entreprise garantit le respect de la chaîne du froid et une livraison réfrigérée à domicile sous 48h maximum, du lundi au samedi de 8h à 20h.
+
+- Téléphone : 06 70 59 45 45
+- WhatsApp : https://wa.me/212670594545
+- Email : commande@osz-foodistribution.ma
+- Zone de livraison : Marrakech (Guéliz, Hivernage, Palmeraie, Targa et environs)
+- Horaires : Lundi – Samedi, 8h – 20h
+
+## Offre Particuliers
+
+Les particuliers peuvent commander en ligne via le catalogue produits et se faire livrer à domicile. La commande se passe via le site web avec confirmation par appel ou WhatsApp. Paiement à la livraison accepté.
+
+- Catalogue : https://www.osz-foodistribution.ma/particuliers/commander
+- Catégories disponibles : viandes, charcuterie, légumes
+- Livraison : réfrigérée, sous 48h, Marrakech uniquement
+- Toute commande passée après 13h est livrée le lendemain
+
+## Offre Professionnels
+
+OSZ propose une offre B2B pour les professionnels de la restauration : restaurants, hôtels, traiteurs, cantines. Devis personnalisés sur demande, volumes adaptés, livraison régulière.
+
+- Page professionnels : https://www.osz-foodistribution.ma/professionnels
+
+## Pages principales
+
+- Accueil : https://www.osz-foodistribution.ma
+- Espace particuliers : https://www.osz-foodistribution.ma/particuliers
+- Catalogue / Commander : https://www.osz-foodistribution.ma/particuliers/commander
+- Espace professionnels : https://www.osz-foodistribution.ma/professionnels
+- Sitemap : https://www.osz-foodistribution.ma/sitemap.xml

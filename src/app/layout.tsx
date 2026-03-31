@@ -61,6 +61,7 @@ export const metadata: Metadata = {
     images: ["/assets/logo.png"],
   },
   robots: { index: true, follow: true },
+  verification: { google: "ozYBBjSOxduMi9m6zOm2UBmUyqZxLvcK0lmgsYyL5vY" },
 };
 
 const jsonLd = {

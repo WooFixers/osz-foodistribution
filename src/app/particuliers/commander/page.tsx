@@ -78,7 +78,7 @@ const CatHeader = ({ cartCount, onCartOpen }: { cartCount: number; onCartOpen: (
         <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">Accueil</Link>
         <Link href="/professionnels" className="text-muted-foreground hover:text-foreground transition-colors">Professionnels</Link>
         <Link href="/particuliers" className="text-muted-foreground hover:text-foreground transition-colors">Particuliers</Link>
-        <Link href="/particuliers/catalogue" className="text-foreground font-semibold">Catalogue</Link>
+        <Link href="/particuliers/commander" className="text-foreground font-semibold">Commander</Link>
       </nav>
       <div className="flex items-center gap-3">
         <a href="tel:0670594545" className="hidden lg:flex items-center gap-1.5 text-muted-foreground text-sm hover:text-foreground transition-colors">
@@ -433,7 +433,7 @@ export default function CataloguePage() {
             <ChevronRight className="w-3.5 h-3.5" />
             <Link href="/particuliers" className="hover:text-foreground transition-colors">Particuliers</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-foreground font-medium">Catalogue</span>
+            <span className="text-foreground font-medium">Commander</span>
           </nav>
           <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-2">Commander votre viande fraîche à Marrakech</h1>
           <p className="text-muted-foreground max-w-xl">Sélectionnez vos produits et passez commande via WhatsApp. Livraison réfrigérée à domicile sur tout Marrakech — délai 48h maximum.</p>
