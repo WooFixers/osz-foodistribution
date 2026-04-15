@@ -5,16 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Phone, Mail, MapPin, Clock, ChevronRight,
-  ShoppingCart, Filter, X, SlidersHorizontal, Search,
+  ShoppingCart, Search, Menu,
   Truck, ShieldCheck, Thermometer, Star,
-  Package, Check, Minus, Plus, MessageCircle, User,
+  Package, Check, Minus, Plus, MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
@@ -43,24 +41,6 @@ interface Product {
   rating: number | null;
 }
 
-const CATEGORIES = [
-  { value: "viandes", label: "Viandes" },
-  { value: "legumes", label: "Légumes" },
-  { value: "charcuterie", label: "Charcuterie" },
-];
-
-const TYPES = [
-  { value: "frais", label: "Frais" },
-  { value: "surgele", label: "Surgelé" },
-  { value: "prepare", label: "Préparé" },
-];
-
-const FORMATS = [
-  { value: "unite", label: "À l'unité" },
-  { value: "kilo", label: "Au kilo" },
-  { value: "paquet", label: "Paquet familial" },
-];
-
 const BADGE_MAP: Record<string, { label: string; className: string }> = {
   populaire: { label: "Populaire", className: "bg-primary text-primary-foreground" },
   nouveau:   { label: "Nouveau",   className: "bg-accent text-accent-foreground border border-border" },
@@ -68,6 +48,13 @@ const BADGE_MAP: Record<string, { label: string; className: string }> = {
 };
 
 /* ─── HEADER ─── */
+const NAV_LINKS = [
+  { href: "/", label: "Accueil" },
+  { href: "/professionnels", label: "Professionnels" },
+  { href: "/particuliers", label: "Particuliers" },
+  { href: "/particuliers/commander", label: "Commander" },
+];
+
 const CatHeader = ({ cartCount, onCartOpen }: { cartCount: number; onCartOpen: () => void }) => (
   <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
     <div className="container mx-auto flex items-center justify-between py-4">
@@ -75,10 +62,11 @@ const CatHeader = ({ cartCount, onCartOpen }: { cartCount: number; onCartOpen: (
         <Image src="/assets/logo.png" alt="OSZ Food Distribution — retour à l'accueil" width={120} height={40} className="h-10 w-auto" />
       </Link>
       <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-6 text-base font-medium">
-        <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">Accueil</Link>
-        <Link href="/professionnels" className="text-muted-foreground hover:text-foreground transition-colors">Professionnels</Link>
-        <Link href="/particuliers" className="text-muted-foreground hover:text-foreground transition-colors">Particuliers</Link>
-        <Link href="/particuliers/commander" className="text-foreground font-semibold">Commander</Link>
+        {NAV_LINKS.map(({ href, label }) => (
+          <Link key={href} href={href} className={href === "/particuliers/commander" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground transition-colors"}>
+            {label}
+          </Link>
+        ))}
       </nav>
       <div className="flex items-center gap-3">
         <a href="tel:0670594545" className="hidden lg:flex items-center gap-1.5 text-muted-foreground text-sm hover:text-foreground transition-colors">
@@ -93,111 +81,50 @@ const CatHeader = ({ cartCount, onCartOpen }: { cartCount: number; onCartOpen: (
             </span>
           )}
         </button>
+        {/* Mobile hamburger */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <button className="p-2 rounded-full hover:bg-accent transition-colors" aria-label="Menu">
+                <Menu className="w-5 h-5 text-foreground" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-72">
+              <SheetHeader>
+                <SheetTitle>
+                  <Image src="/assets/logo.png" alt="OSZ Food Distribution" width={100} height={34} className="h-8 w-auto" />
+                </SheetTitle>
+              </SheetHeader>
+              <nav className="mt-8 flex flex-col gap-1">
+                {NAV_LINKS.map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`px-3 py-3 rounded-lg text-base font-medium transition-colors ${
+                      href === "/particuliers/commander"
+                        ? "bg-primary/10 text-primary font-semibold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+              <div className="mt-8 pt-6 border-t border-border space-y-3 text-sm text-muted-foreground">
+                <a href="tel:0670594545" className="flex items-center gap-2 hover:text-foreground transition-colors">
+                  <Phone className="w-4 h-4" /> 06 70 59 45 45
+                </a>
+                <a href="https://wa.me/212670594545" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
+                </a>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </div>
   </header>
 );
-
-/* ─── FILTER SECTION ─── */
-const FilterSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-6">
-    <h4 className="font-heading text-sm font-semibold text-foreground mb-3">{title}</h4>
-    {children}
-  </div>
-);
-
-/* ─── FILTER PANEL ─── */
-const FilterPanel = ({
-  selectedCategories, toggleCategory,
-  selectedTypes, toggleType,
-  selectedFormats, toggleFormat,
-  priceRange, setPriceRange,
-  inStockOnly, setInStockOnly,
-  onReset,
-}: {
-  selectedCategories: string[];
-  toggleCategory: (v: string) => void;
-  selectedTypes: string[];
-  toggleType: (v: string) => void;
-  selectedFormats: string[];
-  toggleFormat: (v: string) => void;
-  priceRange: number[];
-  setPriceRange: (v: number[]) => void;
-  inStockOnly: boolean;
-  setInStockOnly: (v: boolean) => void;
-  onReset: () => void;
-}) => {
-  const activeCount =
-    selectedCategories.length + selectedTypes.length + selectedFormats.length +
-    (inStockOnly ? 1 : 0) + (priceRange[0] > 0 || priceRange[1] < 400 ? 1 : 0);
-
-  return (
-    <div className="space-y-0">
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="font-heading text-base font-bold text-foreground flex items-center gap-2">
-          <SlidersHorizontal className="w-4 h-4" /> Filtres
-          {activeCount > 0 && (
-            <span className="ml-1 w-5 h-5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center">
-              {activeCount}
-            </span>
-          )}
-        </h3>
-        {activeCount > 0 && (
-          <button onClick={onReset} className="text-xs text-primary hover:underline font-medium">
-            Réinitialiser
-          </button>
-        )}
-      </div>
-
-      <FilterSection title="Catégorie">
-        <div className="space-y-2.5">
-          {CATEGORIES.map((c) => (
-            <label key={c.value} className="flex items-center gap-2.5 cursor-pointer group">
-              <Checkbox checked={selectedCategories.includes(c.value)} onCheckedChange={() => toggleCategory(c.value)} />
-              <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{c.label}</span>
-            </label>
-          ))}
-        </div>
-      </FilterSection>
-
-      <FilterSection title="Type de produit">
-        <div className="space-y-2.5">
-          {TYPES.map((t) => (
-            <label key={t.value} className="flex items-center gap-2.5 cursor-pointer group">
-              <Checkbox checked={selectedTypes.includes(t.value)} onCheckedChange={() => toggleType(t.value)} />
-              <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{t.label}</span>
-            </label>
-          ))}
-        </div>
-      </FilterSection>
-
-      <FilterSection title={`Prix (${priceRange[0]} – ${priceRange[1]} DH)`}>
-        <Slider value={priceRange} onValueChange={setPriceRange} min={0} max={400} step={5} className="mt-2" />
-        <div className="flex justify-between text-[11px] text-muted-foreground mt-1.5">
-          <span>0 DH</span><span>400 DH</span>
-        </div>
-      </FilterSection>
-
-      <FilterSection title="Conditionnement">
-        <div className="space-y-2.5">
-          {FORMATS.map((f) => (
-            <label key={f.value} className="flex items-center gap-2.5 cursor-pointer group">
-              <Checkbox checked={selectedFormats.includes(f.value)} onCheckedChange={() => toggleFormat(f.value)} />
-              <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{f.label}</span>
-            </label>
-          ))}
-        </div>
-      </FilterSection>
-
-      <FilterSection title="Disponibilité">
-        <label className="flex items-center gap-2.5 cursor-pointer group">
-          <Checkbox checked={inStockOnly} onCheckedChange={() => setInStockOnly(!inStockOnly)} />
-          <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">En stock uniquement</span>
-        </label>
-      </FilterSection>
-    </div>
-  );
-};
 
 /* ─── PRODUCT CARD ─── */
 const ProductCard = ({ product, onAdd }: { product: Product; onAdd: (product: Product, qty: number) => void }) => {
@@ -328,11 +255,6 @@ export default function CataloguePage() {
   const { items, addItem, removeItem, updateQty, clearCart, total, count } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("pertinence");
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [selectedFormats, setSelectedFormats] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState([0, 400]);
-  const [inStockOnly, setInStockOnly] = useState(false);
   const [page, setPage] = useState(1);
   const perPage = 9;
 
@@ -350,28 +272,10 @@ export default function CataloguePage() {
     load();
   }, []);
 
-  const toggle = (arr: string[], val: string) =>
-    arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val];
-
-  const resetFilters = () => {
-    setSelectedCategories([]);
-    setSelectedTypes([]);
-    setSelectedFormats([]);
-    setPriceRange([0, 400]);
-    setInStockOnly(false);
-    setSearchQuery("");
-    setPage(1);
-  };
-
   const filtered = useMemo(() => {
     let result = products.filter((p) => {
       if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
           !(p.description ?? "").toLowerCase().includes(searchQuery.toLowerCase())) return false;
-      if (selectedCategories.length && !selectedCategories.includes(p.category)) return false;
-      if (selectedTypes.length && (!p.type || !selectedTypes.includes(p.type))) return false;
-      if (selectedFormats.length && (!p.format || !selectedFormats.includes(p.format))) return false;
-      if (p.price < priceRange[0] || p.price > priceRange[1]) return false;
-      if (inStockOnly && !p.in_stock) return false;
       return true;
     });
 
@@ -382,7 +286,7 @@ export default function CataloguePage() {
       case "populaires": result = [...result].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0)); break;
     }
     return result;
-  }, [products, searchQuery, selectedCategories, selectedTypes, selectedFormats, priceRange, inStockOnly, sortBy]);
+  }, [products, searchQuery, sortBy]);
 
   const totalPages = Math.ceil(filtered.length / perPage);
   const paginated = filtered.slice((page - 1) * perPage, page * perPage);
@@ -396,20 +300,6 @@ export default function CataloguePage() {
       image: product.images?.[0] ?? "/assets/placeholder.jpg",
     }, qty);
     setCartOpen(true);
-  };
-
-  const filterProps = {
-    selectedCategories,
-    toggleCategory: (v: string) => { setSelectedCategories(toggle(selectedCategories, v)); setPage(1); },
-    selectedTypes,
-    toggleType: (v: string) => { setSelectedTypes(toggle(selectedTypes, v)); setPage(1); },
-    selectedFormats,
-    toggleFormat: (v: string) => { setSelectedFormats(toggle(selectedFormats, v)); setPage(1); },
-    priceRange,
-    setPriceRange: (v: number[]) => { setPriceRange(v); setPage(1); },
-    inStockOnly,
-    setInStockOnly: (v: boolean) => { setInStockOnly(v); setPage(1); },
-    onReset: resetFilters,
   };
 
   return (
@@ -452,18 +342,6 @@ export default function CataloguePage() {
           />
         </div>
         <div className="flex items-center gap-3 w-full sm:w-auto">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="sm" className="lg:hidden">
-                <Filter className="w-4 h-4 mr-1.5" /> Filtres
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] overflow-y-auto">
-              <SheetHeader><SheetTitle>Filtres</SheetTitle></SheetHeader>
-              <div className="mt-6"><FilterPanel {...filterProps} /></div>
-            </SheetContent>
-          </Sheet>
-
           <Select value={sortBy} onValueChange={setSortBy}>
             <SelectTrigger className="w-[180px] text-sm"><SelectValue placeholder="Trier par" /></SelectTrigger>
             <SelectContent>
@@ -485,73 +363,58 @@ export default function CataloguePage() {
 
       {/* ─── MAIN CONTENT ─── */}
       <div className="container mx-auto flex-1 pb-16">
-        <div className="flex gap-8">
-          {/* Desktop sidebar */}
-          <aside className="hidden lg:block w-64 shrink-0">
-            <div className="sticky top-20 bg-card rounded-xl border border-border p-5">
-              <FilterPanel {...filterProps} />
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+            {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
+          </div>
+        ) : paginated.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+              {paginated.map((p) => (
+                <ProductCard key={p.id} product={p} onAdd={addToCart} />
+              ))}
             </div>
-          </aside>
 
-          {/* Product grid */}
-          <div className="flex-1">
-            {loading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
-              </div>
-            ) : paginated.length > 0 ? (
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                  {paginated.map((p) => (
-                    <ProductCard key={p.id} product={p} onAdd={addToCart} />
-                  ))}
-                </div>
-
-                {totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-10">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                      <button
-                        key={n}
-                        onClick={() => { setPage(n); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                        className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
-                          n === page
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-card border border-border text-muted-foreground hover:bg-accent"
-                        }`}
-                      >
-                        {n}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </>
-            ) : products.length === 0 ? (
-              <div className="text-center py-20">
-                <Package className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-2">Catalogue en cours de mise à jour</h3>
-                <p className="text-muted-foreground mb-2">Notre catalogue est en cours de mise à jour.</p>
-                <p className="text-muted-foreground mb-6">Contactez-nous directement pour passer commande :</p>
-                <a
-                  href="https://wa.me/212670594545?text=Bonjour%2C%20je%20voudrais%20commander%20de%20la%20viande%20fra%C3%AEche%20%C3%A0%20Marrakech."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" /> Commander via WhatsApp
-                </a>
-              </div>
-            ) : (
-              <div className="text-center py-20">
-                <Package className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-2">Aucun produit trouvé</h3>
-                <p className="text-muted-foreground mb-4">Essayez de modifier vos critères de recherche ou de réinitialiser les filtres.</p>
-                <Button variant="outline" onClick={resetFilters}>
-                  <X className="w-4 h-4 mr-1.5" /> Réinitialiser les filtres
-                </Button>
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-10">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                  <button
+                    key={n}
+                    onClick={() => { setPage(n); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
+                      n === page
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-card border border-border text-muted-foreground hover:bg-accent"
+                    }`}
+                  >
+                    {n}
+                  </button>
+                ))}
               </div>
             )}
+          </>
+        ) : products.length === 0 ? (
+          <div className="text-center py-20">
+            <Package className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
+            <h3 className="font-heading text-xl font-semibold text-foreground mb-2">Catalogue en cours de mise à jour</h3>
+            <p className="text-muted-foreground mb-2">Notre catalogue est en cours de mise à jour.</p>
+            <p className="text-muted-foreground mb-6">Contactez-nous directement pour passer commande :</p>
+            <a
+              href="https://wa.me/212670594545?text=Bonjour%2C%20je%20voudrais%20commander%20de%20la%20viande%20fra%C3%AEche%20%C3%A0%20Marrakech."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" /> Commander via WhatsApp
+            </a>
           </div>
-        </div>
+        ) : (
+          <div className="text-center py-20">
+            <Package className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
+            <h3 className="font-heading text-xl font-semibold text-foreground mb-2">Aucun produit trouvé</h3>
+            <p className="text-muted-foreground">Essayez de modifier votre recherche.</p>
+          </div>
+        )}
       </div>
 
       {/* ─── DELIVERY REASSURANCE ─── */}
