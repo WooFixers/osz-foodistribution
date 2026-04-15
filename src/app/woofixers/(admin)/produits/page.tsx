@@ -31,13 +31,13 @@ export default async function ProduitsPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-8">
+    <div className="p-4 md:p-8">
+      <div className="flex flex-wrap items-start gap-4 mb-8">
         <div>
           <h1 className="font-heading text-2xl font-bold text-foreground">Produits</h1>
           <p className="text-muted-foreground mt-1">{products?.length ?? 0} produit{(products?.length ?? 0) !== 1 ? "s" : ""} au catalogue</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 ml-auto">
           <ExportImportButtons />
           <Button asChild>
             <Link href="/woofixers/produits/nouveau">
