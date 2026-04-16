@@ -15,7 +15,7 @@ export default async function AdminLayout({
   if (!user) redirect("/woofixers");
 
   return (
-    <div className="min-h-screen bg-secondary flex flex-col md:flex-row">
+    <div className="min-h-screen bg-secondary flex flex-col">
       <AdminNav />
       <main className="flex-1 overflow-auto">
         {children}

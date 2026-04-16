@@ -12,91 +12,100 @@ const navItems = [
   { href: "/woofixers/messages", label: "Messages", icon: MessageSquare },
 ];
 
-function NavLinks({ pathname, onNavigate }: { pathname: string; onNavigate?: () => void }) {
-  return (
-    <nav className="flex-1 p-4 space-y-1">
-      {navItems.map(({ href, label, icon: Icon }) => {
-        const active = pathname.startsWith(href);
-        return (
-          <Link
-            key={href}
-            href={href}
-            onClick={onNavigate}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-              active
-                ? "bg-primary text-primary-foreground"
-                : "text-background/70 hover:bg-background/10 hover:text-background"
-            }`}
-          >
-            <Icon className="w-4 h-4" />
-            {label}
-          </Link>
-        );
-      })}
-    </nav>
-  );
-}
-
-function LogoutButton({ onNavigate }: { onNavigate?: () => void }) {
+export default function AdminNav() {
+  const pathname = usePathname();
   const router = useRouter();
   const supabase = createClient();
 
-  const handleSignOut = async () => {
-    onNavigate?.();
+  const handleSignOut = async (closeSheet?: () => void) => {
+    closeSheet?.();
     await supabase.auth.signOut();
     router.push("/woofixers");
     router.refresh();
   };
 
   return (
-    <div className="p-4 border-t border-background/10">
-      <button
-        onClick={handleSignOut}
-        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-background/70 hover:bg-background/10 hover:text-background transition-colors w-full"
-      >
-        <LogOut className="w-4 h-4" />
-        Déconnexion
-      </button>
-    </div>
-  );
-}
-
-export default function AdminNav() {
-  const pathname = usePathname();
-
-  return (
-    <>
-      {/* Desktop sidebar */}
-      <aside className="hidden md:flex w-60 shrink-0 bg-foreground text-background flex-col min-h-screen">
-        <div className="p-6 border-b border-background/10">
-          <p className="font-heading font-bold text-lg text-background">OSZ Admin</p>
-          <p className="text-xs text-background/40 mt-0.5">Espace administration</p>
+    <header className="bg-foreground text-background shrink-0">
+      <div className="flex items-center justify-between px-4 md:px-6 h-14">
+        {/* Logo */}
+        <div>
+          <p className="font-heading font-bold text-base text-background leading-none">OSZ Admin</p>
+          <p className="text-[10px] text-background/40 mt-0.5 hidden sm:block">Espace administration</p>
         </div>
-        <NavLinks pathname={pathname} />
-        <LogoutButton />
-      </aside>
 
-      {/* Mobile top bar */}
-      <div className="md:hidden bg-foreground text-background flex items-center justify-between px-4 py-3 shrink-0">
-        <p className="font-heading font-bold text-base text-background">OSZ Admin</p>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {navItems.map(({ href, label, icon: Icon }) => {
+            const active = pathname.startsWith(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-primary text-primary-foreground"
+                    : "text-background/70 hover:bg-background/10 hover:text-background"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Desktop logout */}
+        <button
+          onClick={() => handleSignOut()}
+          className="hidden md:flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-background/70 hover:bg-background/10 hover:text-background transition-colors"
+        >
+          <LogOut className="w-4 h-4" />
+          Déconnexion
+        </button>
+
+        {/* Mobile hamburger */}
         <Sheet>
           <SheetTrigger asChild>
-            <button className="p-2 rounded-lg text-background/70 hover:bg-background/10 hover:text-background transition-colors">
+            <button className="md:hidden p-2 rounded-lg text-background/70 hover:bg-background/10 hover:text-background transition-colors">
               <Menu className="w-5 h-5" />
             </button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-64 p-0 bg-foreground text-background border-background/10">
-            <div className="p-6 border-b border-background/10">
-              <p className="font-heading font-bold text-lg text-background">OSZ Admin</p>
+          <SheetContent side="right" className="w-64 p-0 bg-foreground text-background border-background/10">
+            <div className="p-5 border-b border-background/10">
+              <p className="font-heading font-bold text-base text-background">OSZ Admin</p>
               <p className="text-xs text-background/40 mt-0.5">Espace administration</p>
             </div>
-            <div className="flex flex-col flex-1 overflow-y-auto">
-              <NavLinks pathname={pathname} />
-              <LogoutButton />
+            <nav className="p-3 space-y-1">
+              {navItems.map(({ href, label, icon: Icon }) => {
+                const active = pathname.startsWith(href);
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      active
+                        ? "bg-primary text-primary-foreground"
+                        : "text-background/70 hover:bg-background/10 hover:text-background"
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    {label}
+                  </Link>
+                );
+              })}
+            </nav>
+            <div className="absolute bottom-0 left-0 right-0 p-3 border-t border-background/10">
+              <button
+                onClick={() => handleSignOut()}
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-background/70 hover:bg-background/10 hover:text-background transition-colors w-full"
+              >
+                <LogOut className="w-4 h-4" />
+                Déconnexion
+              </button>
             </div>
           </SheetContent>
         </Sheet>
       </div>
-    </>
+    </header>
   );
 }
