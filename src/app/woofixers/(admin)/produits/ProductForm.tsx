@@ -21,6 +21,15 @@ import {
 } from "@/components/ui/form";
 import type { Product } from "@/lib/supabase/types";
 
+function toSlug(str: string): string {
+  return str
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 const schema = z.object({
   name: z.string().min(1, "Nom requis"),
   description: z.string().optional(),
@@ -106,6 +115,7 @@ export default function ProductForm({ product }: Props) {
   const onSubmit = async (values: FormValues) => {
     const payload = {
       ...values,
+      slug: product ? undefined : toSlug(values.name),
       images,
       type: values.type ?? null,
       format: values.format ?? null,
@@ -119,14 +129,21 @@ export default function ProductForm({ product }: Props) {
         : [],
     };
 
-    let error;
-    if (product) {
-      ({ error } = await supabase.from("products").update(payload).eq("id", product.id));
-    } else {
-      ({ error } = await supabase.from("products").insert(payload));
-    }
+    const res = product
+      ? await fetch("/api/admin/products", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: product.id, ...payload }),
+        })
+      : await fetch("/api/admin/products", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-    if (error) {
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      console.error("Product save error:", data);
       toast.error("Erreur lors de l'enregistrement.");
       return;
     }

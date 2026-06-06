@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { createClient } from "@/lib/supabase/server";
+import type { Product } from "@/lib/supabase/types";
 
 export const metadata: Metadata = {
   title: "Livraison viande domicile Marrakech — Bœuf & Agneau frais | OSZ",
@@ -301,44 +303,56 @@ const HowItWorks = () => (
 );
 
 /* ─── FEATURED PRODUCTS ─── */
-const featuredProducts = [
-  { name: "Entrecôte de bœuf fraîche", tag: "Populaire", price: "189 MAD/kg" },
-  { name: "Filet d'agneau", tag: "Premium", price: "249 MAD/kg" },
-  { name: "Poulet fermier entier", tag: "Nouveau", price: "69 MAD/kg" },
-  { name: "Assortiment charcuterie", tag: "Offre spéciale", price: "149 MAD" },
-];
+const BADGE_LABELS: Record<string, string> = {
+  populaire: "Populaire",
+  nouveau: "Nouveau",
+  offre: "Offre spéciale",
+};
 
-const FeaturedSection = () => (
-  <section className="section-padding bg-background">
-    <div className="container mx-auto">
-      <div className="text-center max-w-2xl mx-auto mb-16">
-        <p className="text-primary uppercase tracking-[0.25em] text-sm font-semibold mb-3">Sélection du moment</p>
-        <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-5">Nos produits phares</h2>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featuredProducts.map((p) => (
-          <div key={p.name} className="bg-secondary rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
-            <div className="h-48 bg-primary/5 flex items-center justify-center relative">
-              <span className="text-6xl">🥩</span>
-              <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">{p.tag}</span>
-            </div>
-            <div className="p-5">
-              <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{p.name}</h3>
-              <div className="flex items-center justify-between">
-                <span className="font-heading text-xl font-bold text-primary">{p.price}</span>
-                <Button size="sm" className="rounded-sm" asChild>
-                  <Link href="/particuliers/commander">
-                    <ShoppingCart className="w-4 h-4 mr-1" /> Voir
-                  </Link>
-                </Button>
+const FeaturedSection = ({ products }: { products: Product[] }) => {
+  if (products.length === 0) return null;
+  return (
+    <section className="section-padding bg-background">
+      <div className="container mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-primary uppercase tracking-[0.25em] text-sm font-semibold mb-3">Sélection du moment</p>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-5">Nos produits phares</h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <div key={product.id} className="bg-secondary rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
+              <div className="h-48 bg-primary/5 relative overflow-hidden">
+                <Image
+                  src={product.images?.[0] ?? "/assets/placeholder.jpg"}
+                  alt={product.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, 25vw"
+                />
+                {product.badge && (
+                  <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
+                    {BADGE_LABELS[product.badge]}
+                  </span>
+                )}
+              </div>
+              <div className="p-5">
+                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{product.name}</h3>
+                <div className="flex items-center justify-between">
+                  <span className="font-heading text-xl font-bold text-primary">{product.price} DH / {product.unit}</span>
+                  <Button size="sm" className="rounded-sm" asChild>
+                    <Link href={`/particuliers/produit/${product.slug}`}>
+                      <ShoppingCart className="w-4 h-4 mr-1" /> Voir
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ─── TESTIMONIALS ─── */
 const testimonials = [
@@ -506,7 +520,17 @@ const PartFooter = () => (
 );
 
 /* ─── PAGE ─── */
-export default function ParticuliersPage() {
+export default async function ParticuliersPage() {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("products")
+    .select("id, slug, name, price, unit, badge, images")
+    .eq("is_featured", true)
+    .order("sort_order", { ascending: true })
+    .limit(4);
+
+  const featured = (data as Product[] | null) ?? [];
+
   return (
     <main className="min-h-screen bg-background">
       <PartHeader />
@@ -516,7 +540,7 @@ export default function ParticuliersPage() {
       <DeliverySection />
       <QualitySectionPart />
       <HowItWorks />
-      <FeaturedSection />
+      <FeaturedSection products={featured} />
       <PartTestimonialsSection />
       <LocalPresence />
       <CTASection />
