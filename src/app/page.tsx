@@ -13,11 +13,11 @@ import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 export const metadata: Metadata = {
   title: "OSZ Food Distribution — Fournisseur de viande & Offre Chawarma à Marrakech",
   description:
-    "Fournisseur de viande pour restaurants, snacks et hôtels à Marrakech. Offre spéciale : Viande de poulet pour chawarma à 29 DH/kg. Approvisionnement régulier, qualité garantie.",
+    "Fournisseur de viande pour restaurants, snacks et hôtels à Marrakech. Offre spéciale : Viande de poulet pour chawarma au meilleur prix garanti. Approvisionnement régulier, qualité garantie.",
   openGraph: {
-    title: "OSZ Food Distribution — Offre Poulet Chawarma 29 DH/kg & Viandes Marrakech",
+    title: "OSZ Food Distribution — Offre Poulet Chawarma & Viandes au Meilleur Prix Marrakech",
     description:
-      "Distribution de viande à Marrakech. Offre exclusive restauration : Viande de poulet pour chawarma à 29 DH/kg.",
+      "Distribution de viande à Marrakech. Offre exclusive restauration : Viande de poulet pour chawarma à prix imbattable.",
     url: "https://www.osz-foodistribution.ma",
     siteName: "OSZ Food Distribution",
     locale: "fr_MA",

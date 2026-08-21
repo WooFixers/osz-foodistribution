@@ -7,7 +7,7 @@ import QuoteFormDialog from "@/components/forms/QuoteFormDialog";
 
 export default function SpecialOfferSection() {
   const whatsappUrl = `https://wa.me/212670594545?text=${encodeURIComponent(
-    "Bonjour OSZ Food Distribution, je suis intéressé par votre offre spéciale : Viande de poulet pour chawarma à 29 DH/kg."
+    "Bonjour OSZ Food Distribution, je suis intéressé par votre offre spéciale : Viande de poulet pour chawarma (meilleur tarif)."
   )}`;
 
   return (
@@ -44,22 +44,16 @@ export default function SpecialOfferSection() {
               </p>
 
               {/* Price Callout */}
-              <div className="flex flex-wrap items-baseline gap-3 p-5 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
-                <span className="text-muted-foreground font-medium text-sm sm:text-base uppercase tracking-wider">
-                  Prix Exceptionnel :
-                </span>
-                <div className="flex items-baseline gap-1">
-                  <span className="font-heading text-5xl sm:text-6xl font-black text-primary tracking-tight">
-                    29
-                  </span>
-                  <span className="font-heading text-2xl sm:text-3xl font-bold text-primary">
-                    DH
-                  </span>
-                  <span className="text-muted-foreground font-semibold text-lg ml-1">
-                    / kg
-                  </span>
+              <div className="flex flex-wrap items-center justify-between gap-4 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
+                <div>
+                  <div className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-primary tracking-tight">
+                    Prix Imbattable
+                  </div>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 font-medium">
+                    Le meilleur rapport qualité/prix garanti à Marrakech
+                  </p>
                 </div>
-                <span className="ml-auto text-xs sm:text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                <span className="text-xs sm:text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20 whitespace-nowrap">
                   En stock &amp; approvisionnement régulier
                 </span>
               </div>
@@ -110,7 +104,7 @@ export default function SpecialOfferSection() {
               <div className="relative rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xl group">
                 <Image
                   src="/assets/viande_poulet_chawarma.webp"
-                  alt="Viande poulet pour chawarma Marrakech — 29 DH / kg"
+                  alt="Viande poulet pour chawarma Marrakech — Prix Imbattable"
                   width={600}
                   height={400}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
@@ -122,13 +116,14 @@ export default function SpecialOfferSection() {
                       <p className="text-xs uppercase tracking-widest text-amber-300 font-semibold">Qualité Supérieure</p>
                       <p className="font-heading text-lg font-bold">Poulet frais pour broche chawarma</p>
                     </div>
-                    <div className="bg-primary text-white px-3.5 py-1.5 rounded-lg font-bold text-lg shadow">
-                      29 DH<span className="text-xs font-normal">/kg</span>
+                    <div className="bg-primary text-white px-3.5 py-1.5 rounded-lg font-bold text-sm sm:text-base shadow tracking-wide uppercase">
+                      Prix Imbattable
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

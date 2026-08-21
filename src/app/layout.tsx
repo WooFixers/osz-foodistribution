@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | OSZ Food Distribution",
   },
   description:
-    "Fournisseur de viande bovine et agneau de qualité professionnelle à Marrakech. Approvisionnement régulier pour restaurants, hôtels, riads et traiteurs. Traçabilité HACCP et chaîne du froid maîtrisée.",
+    "Fournisseur de viande bovine, agneau et volaille à Marrakech. Approvisionnement régulier pour restaurants, hôtels, riads et traiteurs. Conformité sanitaire ONSSA (Loi 28-07) et chaîne du froid maîtrisée.",
   openGraph: {
     type: "website",
     locale: "fr_MA",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "OSZ Food Distribution",
     title: "OSZ Food Distribution — Fournisseur de viande à Marrakech",
     description:
-      "Fournisseur de viande bovine et agneau pour restaurants, hôtels et riads à Marrakech. Approvisionnement régulier, qualité HACCP et livraisons planifiées.",
+      "Fournisseur de viande bovine et agneau pour restaurants, hôtels et riads à Marrakech. Approvisionnement régulier, conformité sanitaire ONSSA et livraisons planifiées.",
     images: [
       {
         url: "/assets/logo.png",

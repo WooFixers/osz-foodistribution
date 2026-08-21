@@ -21,7 +21,7 @@ export const ProBlock = () => (
             {[
               { icon: Package, text: "Approvisionnement régulier en bœuf et agneau" },
               { icon: FileText, text: "Découpe sur spécification (grammage, type de découpe)" },
-              { icon: ShieldCheck, text: "Traçabilité HACCP complète" },
+              { icon: ShieldCheck, text: "Traçabilité et conformité ONSSA (Loi 28-07)" },
               { icon: Truck, text: "Réactivité sur commandes urgentes" },
             ].map((item) => (
               <li key={item.text} className="flex items-center gap-3">

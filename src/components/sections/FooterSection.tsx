@@ -65,7 +65,7 @@ const Footer = () => (
               { href: "/", label: "Accueil" },
               { href: "/professionnels", label: "Espace Professionnels" },
               { href: "/professionnels#services", label: "Nos services" },
-              { href: "/professionnels#qualite", label: "Qualité & HACCP" },
+              { href: "/professionnels#qualite", label: "Qualité & Conformité ONSSA" },
             ].map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="text-background/60 hover:text-primary transition-colors flex items-center gap-1">

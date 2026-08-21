@@ -4,7 +4,7 @@ import { Flame, MessageCircle, ArrowRight, Sparkles } from "lucide-react";
 
 export default function AnnouncementBar() {
   const whatsappUrl = `https://wa.me/212670594545?text=${encodeURIComponent(
-    "Bonjour OSZ Food Distribution, je souhaite commander la viande de poulet pour chawarma en promo à 29 DH/kg."
+    "Bonjour OSZ Food Distribution, je souhaite commander la viande de poulet pour chawarma (offre spéciale)."
   )}`;
 
   return (
@@ -26,8 +26,8 @@ export default function AnnouncementBar() {
               Viande de Poulet pour Chawarma :
             </span>
 
-            <span className="inline-flex items-baseline bg-amber-400 text-slate-950 font-black px-2.5 py-0.5 rounded-md text-sm sm:text-base shadow-sm">
-              29 DH <span className="text-xs font-bold text-slate-800 ml-1">/ kg</span>
+            <span className="inline-flex items-center bg-amber-400 text-slate-950 font-black px-2.5 py-0.5 rounded-md text-xs sm:text-sm uppercase tracking-wide shadow-sm">
+              Prix Imbattable
             </span>
 
             <span className="hidden lg:inline-flex items-center gap-1 text-amber-200/90 text-xs font-medium bg-white/10 px-2 py-0.5 rounded">

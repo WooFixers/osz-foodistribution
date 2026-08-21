@@ -113,7 +113,7 @@ export const Header = () => {
                   Offre Chawarma
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Viande de poulet fraîche à <strong className="text-primary font-bold">29 DH/kg</strong> pour snacks &amp; restaurants.
+                  Viande de poulet fraîche à <strong className="text-primary font-bold">prix imbattable</strong> pour snacks &amp; restaurants.
                 </p>
               </div>
 
@@ -153,7 +153,7 @@ export const Header = () => {
                   className="px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-semibold flex items-center justify-between"
                 >
                   <span>Offre Poulet Chawarma</span>
-                  <span className="text-xs font-bold bg-primary text-white px-2 py-0.5 rounded">29 DH</span>
+                  <span className="text-xs font-bold bg-primary text-white px-2 py-0.5 rounded">Prix Imbattable</span>
                 </Link>
                 <Link
                   href="#contact"
@@ -213,7 +213,7 @@ export const HeroSection = () => (
           Votre distributeur de viande bovine et agneau à Marrakech
         </h1>
         <p className="text-lg text-primary-foreground/80 leading-relaxed mb-10 max-w-lg">
-          Qualité professionnelle, traçabilité HACCP et livraisons régulières pour restaurants, hôtels, riads et traiteurs. OSZ Food Distribution sert les professionnels de Marrakech depuis plus de 15 ans.
+          Qualité professionnelle, conformité sanitaire ONSSA (Loi 28-07) et livraisons régulières pour restaurants, hôtels, riads et traiteurs. OSZ Food Distribution sert les professionnels de Marrakech depuis plus de 15 ans.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <QuoteFormDialog>

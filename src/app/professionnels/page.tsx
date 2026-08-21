@@ -5,11 +5,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Fournisseur viande restaurant Marrakech — Hôtels & Restauration | OSZ",
   description:
-    "OSZ Food Distribution : fournisseur de viande bovine et agneau pour restaurants, hôtels et riads à Marrakech. Livraisons régulières, qualité HACCP, 500+ clients professionnels. Demandez votre devis personnalisé.",
+    "OSZ Food Distribution : fournisseur de viande bovine, agneau et volaille pour restaurants, hôtels et riads à Marrakech. Livraisons régulières, conformité ONSSA (Loi 28-07), 500+ clients professionnels. Demandez votre devis personnalisé.",
   openGraph: {
     title: "Fournisseur viande restaurant & hôtel Marrakech | OSZ Food Distribution",
     description:
-      "Approvisionnement professionnel en viande bovine et agneau à Marrakech. Qualité HACCP, livraisons planifiées, interlocuteur dédié.",
+      "Approvisionnement professionnel en viande bovine et agneau à Marrakech. Conformité sanitaire ONSSA (Loi 28-07), livraisons planifiées, interlocuteur dédié.",
     url: "https://www.osz-foodistribution.ma/professionnels",
     siteName: "OSZ Food Distribution",
     locale: "fr_MA",
@@ -48,7 +48,7 @@ const ProHero = () => (
           Fournisseur de viande pour restaurants, hôtels et riads à Marrakech
         </h1>
         <p className="text-lg text-primary-foreground/80 leading-relaxed mb-10 max-w-lg">
-          Bœuf et agneau frais ou surgelé, livrés régulièrement dans votre établissement. Qualité constante, traçabilité HACCP, interlocuteur dédié. Plus de 500 professionnels nous font confiance à Marrakech.
+          Bœuf, agneau et volaille frais ou surgelés, livrés régulièrement dans votre établissement. Qualité constante, conformité sanitaire ONSSA (Loi 28-07), interlocuteur dédié. Plus de 500 professionnels nous font confiance à Marrakech.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <QuoteFormDialog>
@@ -71,11 +71,11 @@ const ProHero = () => (
 
 /* ─── SERVICES ─── */
 const services = [
-  { icon: Package, title: "Approvisionnement viande", desc: "Bœuf et agneau frais ou surgelé, en volume adapté à votre activité. Disponibilité régulière, pas de ruptures." },
-  { icon: Scale, title: "Découpe sur spécification", desc: "Vos pièces préparées selon vos standards : grammage précis, type de découpe, conditionnement adapté à votre brigade." },
+  { icon: Package, title: "Approvisionnement viande", desc: "Bœuf, agneau et volaille frais ou surgelés, en volume adapté à votre brigade. Disponibilité régulière, approvisionnement sécurisé." },
+  { icon: Scale, title: "Découpe sur spécification", desc: "Vos pièces préparées selon vos standards : grammage précis, type de découpe, conditionnement adapté à votre cuisine." },
   { icon: CalendarCheck, title: "Livraisons planifiées", desc: "1, 2 ou 3 passages hebdomadaires selon vos besoins. Horaires adaptés à vos ouvertures de cuisine." },
-  { icon: AlertTriangle, title: "Solutions urgentes", desc: "Besoin de dernière minute ? Notre équipe répond sur WhatsApp 7j/7 et peut organiser une livraison sous 24h." },
-  { icon: FileSearch, title: "Documentation sanitaire", desc: "Certificats d'origine, fiches techniques, traçabilité complète disponibles sur demande pour vos audits et contrôles." },
+  { icon: AlertTriangle, title: "Solutions urgentes", desc: "Besoin de dernière minute ? Notre équipe répond sur WhatsApp 7j/7 et organise une livraison sous 24h." },
+  { icon: FileSearch, title: "Documentation sanitaire ONSSA", desc: "Certificats vétérinaires de salubrité délivrés par l'ONSSA, traçabilité et fiches techniques tenues à disposition pour vos audits d'hygiène." },
   { icon: HeadphonesIcon, title: "Compte professionnel dédié", desc: "Un interlocuteur unique pour vos commandes, vos réclamations et vos ajustements de volume." },
 ];
 
@@ -108,11 +108,11 @@ const ServicesSection = () => (
 
 /* ─── ADVANTAGES ─── */
 const advantages = [
-  { icon: Award, title: "Spécialiste viande", desc: "Contrairement aux grossistes généralistes, OSZ se concentre exclusivement sur la viande bovine et l'agneau. Une expertise pointue qui se ressent dans la qualité lot après lot." },
+  { icon: Award, title: "Spécialiste viandes", desc: "OSZ se concentre sur les viandes de qualité (bœuf, agneau, volaille). Une maîtrise de filière rigoureuse qui se ressent dans la qualité lot après lot." },
   { icon: Banknote, title: "Prix compétitifs", desc: "Tarification professionnelle dégressive selon les volumes. Devis personnalisé après évaluation de vos besoins." },
-  { icon: Thermometer, title: "Chaîne du froid irréprochable", desc: "Transport réfrigéré de notre entrepôt à votre cuisine. Températures contrôlées à chaque étape." },
-  { icon: FileSearch, title: "Traçabilité complète", desc: "Origine, abattoir, date de traitement — chaque lot est documenté. Conformité aux exigences de l'ONSSA." },
-  { icon: ShieldCheck, title: "Normes HACCP", desc: "Application rigoureuse du système HACCP. Procédures de contrôle qualité régulières et documentées." },
+  { icon: Thermometer, title: "Chaîne du froid certifiée", desc: "Transport réfrigéré sous température dirigée (véhicules agréés ONSSA) de notre entrepôt à votre cuisine." },
+  { icon: FileSearch, title: "Traçabilité intégrale ONSSA", desc: "Origine, abattoirs agréés au Maroc, estampillage vétérinaire et numéro de lot documentés sur chaque livraison." },
+  { icon: ShieldCheck, title: "Conformité Loi 28-07", desc: "Application stricte de la législation marocaine sur la sécurité sanitaire des aliments et autocontrôle permanent." },
   { icon: Handshake, title: "15 ans d'expertise locale", desc: "Présents à Marrakech depuis 15 ans, nous connaissons les spécificités de la restauration et de l'hôtellerie locales." },
   { icon: Timer, title: "Réactivité", desc: "Votre activité ne peut pas attendre. Nous répondons aux demandes urgentes et nous adaptons à vos pics d'activité saisonniers." },
   { icon: Users, title: "Partenariat long terme", desc: "Nous construisons des relations durables avec nos clients professionnels. 98% de fidélité sur nos comptes actifs." },
@@ -194,11 +194,11 @@ const LogisticsSection = () => (
 
 /* ─── QUALITY ─── */
 const qualityItems = [
-  { icon: ShieldCheck, title: "Normes HACCP", desc: "Application rigoureuse du système HACCP à chaque étape de notre chaîne." },
-  { icon: ClipboardCheck, title: "Contrôles stricts", desc: "Procédures de contrôle qualité régulières et documentées." },
-  { icon: FileSearch, title: "Traçabilité totale", desc: "Chaque produit est tracé de son origine jusqu'à votre établissement." },
-  { icon: Thermometer, title: "Conservation optimale", desc: "Maintien strict des températures pour garantir la fraîcheur." },
-  { icon: BadgeCheck, title: "Sécurité garantie", desc: "Engagement total envers la sécurité alimentaire de vos clients." },
+  { icon: ShieldCheck, title: "Conformité ONSSA", desc: "Respect strict de la Loi n° 28-07 sur la sécurité sanitaire des produits alimentaires au Maroc." },
+  { icon: ClipboardCheck, title: "Contrôle vétérinaire", desc: "Inspection et estampillage officiel par les services vétérinaires dans les abattoirs agréés." },
+  { icon: FileSearch, title: "Traçabilité totale", desc: "Lots documentés avec certificat de salubrité de l'origine jusqu'à votre établissement." },
+  { icon: Thermometer, title: "Chaîne du froid", desc: "Maintien strict des températures réglementaires en véhicules frigorifiques agréés." },
+  { icon: BadgeCheck, title: "Sécurité garantie", desc: "Engagement total pour la conformité sanitaire et réglementaire de votre brigade." },
 ];
 
 const QualitySectionPro = () => (
@@ -206,12 +206,15 @@ const QualitySectionPro = () => (
     <div className="absolute inset-0 bg-primary-dark" />
     <div className="relative container mx-auto">
       <div className="text-center max-w-2xl mx-auto mb-16">
-        <p className="text-primary-foreground/60 uppercase tracking-[0.25em] text-sm font-semibold mb-3">Qualité &amp; Conformité</p>
+        <p className="text-primary-foreground/60 uppercase tracking-[0.25em] text-sm font-semibold mb-3">Qualité &amp; Conformité Sanitaire Maroc</p>
         <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-5">
-          L&apos;excellence au service de votre exigence
+          Sécurité sanitaire certifiée ONSSA
         </h2>
         <p className="text-primary-foreground/70 text-lg leading-relaxed">
-          La sécurité alimentaire de vos clients commence chez votre fournisseur. Chaque lot de viande bovine et d&apos;agneau distribué par OSZ Food Distribution est traçable de son origine jusqu&apos;à votre réception. Nos processus HACCP sont documentés et disponibles sur demande pour vos audits internes ou les contrôles des autorités sanitaires marocaines.
+          La sécurité sanitaire de vos convives est garantie dès l&apos;approvisionnement. Chaque lot de viande bovine, d&apos;agneau et de volaille distribué par OSZ Food Distribution est issu d&apos;abattoirs agréés au Maroc et rigoureusement inspecté par les services vétérinaires assermentés de l&apos;ONSSA.
+        </p>
+        <p className="text-primary-foreground/70 text-lg leading-relaxed mt-4">
+          Nos procédures d&apos;autocontrôle et de traçabilité respectent scrupuleusement les exigences de la Loi n° 28-07. L&apos;ensemble des certificats vétérinaires de salubrité et fiches techniques sont tenus à votre disposition pour vos audits internes ou les contrôles des commissions d&apos;hygiène de la préfecture de Marrakech.
         </p>
       </div>
       <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
