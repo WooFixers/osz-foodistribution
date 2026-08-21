@@ -31,33 +31,33 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.osz-foodistrib
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "OSZ Food Distribution — Viandes & Produits alimentaires à Marrakech",
+    default: "OSZ Food Distribution — Fournisseur de viande pour restaurants & hôtels à Marrakech",
     template: "%s | OSZ Food Distribution",
   },
   description:
-    "Spécialiste de la distribution de viandes et produits alimentaires à Marrakech. Qualité professionnelle livrée chez vous et auprès des restaurateurs, hôtels et traiteurs.",
+    "Fournisseur de viande bovine et agneau de qualité professionnelle à Marrakech. Approvisionnement régulier pour restaurants, hôtels, riads et traiteurs. Traçabilité HACCP et chaîne du froid maîtrisée.",
   openGraph: {
     type: "website",
     locale: "fr_MA",
     url: SITE_URL,
     siteName: "OSZ Food Distribution",
-    title: "OSZ Food Distribution — Viandes & Produits alimentaires à Marrakech",
+    title: "OSZ Food Distribution — Fournisseur de viande à Marrakech",
     description:
-      "Spécialiste de la distribution de viandes et produits alimentaires à Marrakech. Qualité professionnelle livrée chez vous et auprès des restaurateurs, hôtels et traiteurs.",
+      "Fournisseur de viande bovine et agneau pour restaurants, hôtels et riads à Marrakech. Approvisionnement régulier, qualité HACCP et livraisons planifiées.",
     images: [
       {
         url: "/assets/logo.png",
         width: 1200,
         height: 630,
-        alt: "OSZ Food Distribution — Viandes & Produits alimentaires à Marrakech",
+        alt: "OSZ Food Distribution — Fournisseur de viande à Marrakech",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OSZ Food Distribution — Viandes & Produits alimentaires à Marrakech",
+    title: "OSZ Food Distribution — Fournisseur de viande à Marrakech",
     description:
-      "Spécialiste de la distribution de viandes et produits alimentaires à Marrakech.",
+      "Fournisseur de viande bovine et agneau pour restaurants, hôtels et riads à Marrakech.",
     images: ["/assets/logo.png"],
   },
   robots: { index: true, follow: true },

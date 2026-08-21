@@ -526,6 +526,7 @@ export default async function ParticuliersPage() {
     .from("products")
     .select("id, slug, name, price, unit, badge, images")
     .eq("is_featured", true)
+    .eq("is_active", true)
     .order("sort_order", { ascending: true })
     .limit(4);
 

@@ -47,6 +47,7 @@ const schema = z.object({
   storage_instructions: z.string().optional(),
   suggestions: z.string().optional(),
   is_featured: z.boolean().default(false),
+  is_active: z.boolean().default(true),
   sort_order: z.coerce.number().int().default(0),
 });
 
@@ -82,6 +83,7 @@ export default function ProductForm({ product }: Props) {
       storage_instructions: product?.storage_instructions ?? "",
       suggestions: product?.suggestions?.join(", ") ?? "",
       is_featured: product?.is_featured ?? false,
+      is_active: product?.is_active ?? true,
       sort_order: product?.sort_order ?? 0,
     },
   });
@@ -352,6 +354,14 @@ export default function ProductForm({ product }: Props) {
                 <Checkbox checked={field.value} onCheckedChange={field.onChange} />
               </FormControl>
               <FormLabel className="!mt-0 cursor-pointer">Mis en avant</FormLabel>
+            </FormItem>
+          )} />
+          <FormField control={form.control} name="is_active" render={({ field }) => (
+            <FormItem className="flex items-center gap-2">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <FormLabel className="!mt-0 cursor-pointer">Produit actif</FormLabel>
             </FormItem>
           )} />
         </div>

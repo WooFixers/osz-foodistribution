@@ -24,6 +24,7 @@ export interface Product {
   storage_instructions: string | null;
   suggestions: string[];
   is_featured: boolean;
+  is_active: boolean;
   sort_order: number;
   created_at: string;
   updated_at: string;

@@ -45,6 +45,7 @@ export default async function ProductDetailPage(
     .from("products")
     .select("id, slug, name, description, long_description, price, unit, category, in_stock, badge, images, rating, origin, weight, storage_instructions, suggestions")
     .eq("slug", slug)
+    .eq("is_active", true)
     .single();
 
   if (error || !product) {
@@ -56,6 +57,7 @@ export default async function ProductDetailPage(
     .select("id, slug, name, description, price, unit, category, in_stock, badge, images, rating")
     .eq("category", product.category)
     .neq("id", product.id)
+    .eq("is_active", true)
     .limit(4);
 
   return (

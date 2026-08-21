@@ -3,6 +3,12 @@ import { createServerClient } from "@supabase/ssr";
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Temporarily disable B2C and client account routes — 307 Temporary Redirect for SEO preservation
+  if (pathname.startsWith("/particuliers") || pathname.startsWith("/compte")) {
+    return NextResponse.redirect(new URL("/professionnels", request.url), 307);
+  }
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -35,22 +41,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/woofixers", request.url));
   }
 
-  // Protect customer account sub-routes (except connexion)
-  const isProtectedCompte =
-    pathname.startsWith("/compte/profil") ||
-    pathname.startsWith("/compte/commandes");
-
-  if (isProtectedCompte && !user) {
-    return NextResponse.redirect(new URL("/compte/connexion", request.url));
-  }
-
   return response;
 }
 
 export const config = {
   matcher: [
+    "/particuliers/:path*",
+    "/compte/:path*",
     "/woofixers/:path+",
-    "/compte/profil/:path*",
-    "/compte/commandes/:path*",
   ],
 };
+

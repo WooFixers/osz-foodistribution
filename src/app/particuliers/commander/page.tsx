@@ -265,6 +265,7 @@ export default function CataloguePage() {
       const { data, error } = await supabase
         .from("products")
         .select("id, slug, name, description, price, unit, category, type, format, in_stock, badge, images, rating")
+        .eq("is_active", true)
         .order("sort_order", { ascending: true });
       if (!error && data) setProducts(data as Product[]);
       setLoading(false);

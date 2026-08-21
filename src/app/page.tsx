@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import AnnouncementBar from "@/components/sections/AnnouncementBar";
 import { Header, HeroSection } from "@/components/sections/HeroSection";
+import SpecialOfferSection from "@/components/sections/SpecialOfferSection";
+import AboutSection from "@/components/sections/AboutSection";
+import QualitySection from "@/components/sections/QualitySection";
+import { ProBlock } from "@/components/sections/TargetBlocks";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import Footer from "@/components/sections/FooterSection";
+import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 
 export const metadata: Metadata = {
-  title: "OSZ Food Distribution — Livraison viande fraîche à Marrakech",
+  title: "OSZ Food Distribution — Fournisseur de viande & Offre Chawarma à Marrakech",
   description:
-    "Spécialiste de la distribution de viande bovine et agneau à Marrakech depuis plus de 15 ans. Livraison à domicile pour les particuliers et approvisionnement professionnel pour restaurants, hôtels et riads. Qualité garantie, chaîne du froid maîtrisée.",
+    "Fournisseur de viande pour restaurants, snacks et hôtels à Marrakech. Offre spéciale : Viande de poulet pour chawarma à 29 DH/kg. Approvisionnement régulier, qualité garantie.",
   openGraph: {
-    title: "OSZ Food Distribution — Livraison viande fraîche à Marrakech",
+    title: "OSZ Food Distribution — Offre Poulet Chawarma 29 DH/kg & Viandes Marrakech",
     description:
-      "Distribution de viande bovine et agneau à Marrakech. Livraison domicile et approvisionnement pour restaurants et hôtels.",
+      "Distribution de viande à Marrakech. Offre exclusive restauration : Viande de poulet pour chawarma à 29 DH/kg.",
     url: "https://www.osz-foodistribution.ma",
     siteName: "OSZ Food Distribution",
     locale: "fr_MA",
@@ -16,23 +25,17 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "https://www.osz-foodistribution.ma" },
 };
-import AboutSection from "@/components/sections/AboutSection";
-import QualitySection from "@/components/sections/QualitySection";
-import { ProBlock, ParticuliersBlock } from "@/components/sections/TargetBlocks";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import Footer from "@/components/sections/FooterSection";
-import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background">
+      <AnnouncementBar />
       <Header />
       <HeroSection />
+      <SpecialOfferSection />
       <AboutSection />
       <QualitySection />
       <ProBlock />
-      <ParticuliersBlock />
       <WhyChooseUs />
       <TestimonialsSection />
       <Footer />
@@ -40,3 +43,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+

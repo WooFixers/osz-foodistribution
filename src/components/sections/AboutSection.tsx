@@ -37,10 +37,10 @@ const AboutSection = () => (
           La distribution de viande fraîche de référence à Marrakech
         </h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          OSZ Food Distribution est née de la conviction que la qualité de la viande ne devrait pas être réservée aux seuls grands restaurants. Depuis plus de 15 ans, nous bâtissons des relations durables avec des éleveurs et producteurs sélectionnés pour proposer à Marrakech une viande bovine et un agneau d&apos;une fraîcheur irréprochable.
+          OSZ Food Distribution est le partenaire de référence pour l&apos;approvisionnement en viande à Marrakech. Depuis plus de 15 ans, nous bâtissons des relations durables avec des éleveurs et producteurs sélectionnés pour fournir aux professionnels de la restauration une viande bovine et un agneau d&apos;une fraîcheur irréprochable.
         </p>
         <p className="text-muted-foreground text-lg leading-relaxed mt-4">
-          Notre réseau de fournisseurs locaux et notre maîtrise rigoureuse de la chaîne du froid nous permettent de garantir la même qualité — qu&apos;il s&apos;agisse d&apos;une commande à domicile pour une famille de Guéliz ou d&apos;un approvisionnement hebdomadaire pour un hôtel de la Palmeraie.
+          Notre réseau de fournisseurs locaux et notre maîtrise rigoureuse de la chaîne du froid nous permettent de garantir une régularité exemplaire pour l&apos;approvisionnement de votre restaurant à Guéliz, votre riad en Médina ou votre hôtel dans la Palmeraie.
         </p>
       </div>
       <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">

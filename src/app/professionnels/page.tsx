@@ -27,28 +27,9 @@ import {
 import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 import QuoteFormDialog from "@/components/forms/QuoteFormDialog";
-
-/* ─── HEADER ─── */
-const ProHeader = () => (
-  <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
-    <div className="container mx-auto flex items-center justify-between py-4">
-      <Link href="/">
-        <Image src="/assets/logo.png" alt="OSZ Food Distribution — retour à l'accueil" width={120} height={40} className="h-10 w-auto" />
-      </Link>
-      <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">
-        <Link href="/" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Accueil</Link>
-        <Link href="/professionnels" className="text-foreground font-semibold text-base transition-colors">Professionnels</Link>
-        <Link href="/particuliers" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Particuliers</Link>
-        <Link href="/particuliers/commander" className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors">Commander</Link>
-      </nav>
-      <div className="hidden lg:flex items-center gap-4 text-muted-foreground text-base">
-        <a href="tel:0670594545" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-          <Phone className="w-3.5 h-3.5" /> 06 70 59 45 45
-        </a>
-      </div>
-    </div>
-  </header>
-);
+import AnnouncementBar from "@/components/sections/AnnouncementBar";
+import SpecialOfferSection from "@/components/sections/SpecialOfferSection";
+import { Header } from "@/components/sections/HeroSection";
 
 /* ─── HERO ─── */
 const ProHero = () => (
@@ -71,10 +52,16 @@ const ProHero = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <QuoteFormDialog>
-            <Button size="lg" className="h-14 px-8 rounded-sm bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+            <Button size="lg" className="h-14 px-8 rounded-sm bg-white text-primary hover:bg-white/90 font-medium">
               Demander un devis
             </Button>
           </QuoteFormDialog>
+          <Button size="lg" className="h-14 px-8 rounded-sm bg-transparent border border-white/50 text-white hover:bg-white/10 hover:text-white font-medium" asChild>
+            <a href="https://wa.me/212670594545" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp direct
+            </a>
+          </Button>
         </div>
       </div>
     </div>
@@ -329,13 +316,14 @@ const CTASection = () => (
           Contactez notre équipe pour discuter de vos besoins en viande bovine et agneau. Nous établissons un devis personnalisé selon vos volumes, votre fréquence de livraison et vos spécifications de découpe.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button size="lg" className="h-14 px-8 rounded-sm bg-primary-foreground text-primary hover:bg-primary-foreground/90" asChild>
-            <a href="mailto:commande@osz-foodistribution.ma?subject=Demande%20devis%20professionnel">
+          <QuoteFormDialog>
+            <Button size="lg" className="h-14 px-8 rounded-sm bg-white text-primary hover:bg-white/90 font-medium">
               Demander un devis
-            </a>
-          </Button>
-          <Button variant="outline" size="lg" className="h-14 px-8 rounded-sm border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-            <a href="https://wa.me/212670594545" target="_blank" rel="noopener noreferrer">
+            </Button>
+          </QuoteFormDialog>
+          <Button size="lg" className="h-14 px-8 rounded-sm bg-transparent border border-white/50 text-white hover:bg-white/10 hover:text-white font-medium" asChild>
+            <a href="https://wa.me/212670594545" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+              <MessageCircle className="w-5 h-5" />
               Nous écrire sur WhatsApp
             </a>
           </Button>
@@ -394,9 +382,9 @@ const ProFooter = () => (
           <ul className="space-y-2 text-sm">
             {[
               { href: "/", label: "Accueil" },
-              { href: "/particuliers", label: "Espace Particuliers" },
+              { href: "/professionnels", label: "Espace Professionnels" },
               { href: "#services", label: "Nos services" },
-              { href: "#qualite", label: "Qualité" },
+              { href: "#qualite", label: "Qualité & HACCP" },
             ].map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="text-background/60 hover:text-primary transition-colors flex items-center gap-1">
@@ -423,8 +411,10 @@ const ProFooter = () => (
 export default function ProfessionnelsPage() {
   return (
     <main className="min-h-screen bg-background">
-      <ProHeader />
+      <AnnouncementBar />
+      <Header />
       <ProHero />
+      <SpecialOfferSection />
       <ServicesSection />
       <AdvantagesSection />
       <LogisticsSection />

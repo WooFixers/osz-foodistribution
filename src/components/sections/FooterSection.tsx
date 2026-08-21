@@ -14,7 +14,7 @@ const Footer = () => (
             </Link>
           </div>
           <p className="text-background/60 text-sm leading-relaxed">
-            Distributeur de viande bovine et agneau frais à Marrakech depuis plus de 15 ans. Livraison à domicile pour les particuliers. Approvisionnement professionnel pour restaurants, hôtels et riads.
+            Distributeur de viande bovine et agneau frais à Marrakech depuis plus de 15 ans. Approvisionnement professionnel régulier pour restaurants, hôtels, riads et traiteurs.
           </p>
         </div>
 
@@ -63,9 +63,9 @@ const Footer = () => (
           <ul className="space-y-2 text-sm">
             {[
               { href: "/", label: "Accueil" },
-              { href: "/professionnels", label: "Professionnels" },
-              { href: "/particuliers", label: "Particuliers" },
-              { href: "/particuliers/commander", label: "Commander" },
+              { href: "/professionnels", label: "Espace Professionnels" },
+              { href: "/professionnels#services", label: "Nos services" },
+              { href: "/professionnels#qualite", label: "Qualité & HACCP" },
             ].map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="text-background/60 hover:text-primary transition-colors flex items-center gap-1">

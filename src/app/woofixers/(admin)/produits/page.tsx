@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/lib/supabase/types";
 import DeleteProductButton from "./DeleteProductButton";
+import ToggleProductStatusButton from "./ToggleProductStatusButton";
 import ExportImportButtons from "./ExportImportButtons";
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -85,7 +86,7 @@ export default async function ProduitsPage() {
                         {product.price ? ` · ${product.price} DH / ${product.unit}` : ""}
                       </p>
                     </div>
-                    <div className="shrink-0">
+                    <div className="shrink-0 flex flex-col items-end gap-1">
                       {product.in_stock ? (
                         <span className="inline-flex items-center gap-1 text-green-600 text-xs font-medium">
                           <span className="w-1.5 h-1.5 rounded-full bg-green-500" /> En stock
@@ -95,12 +96,22 @@ export default async function ProduitsPage() {
                           <span className="w-1.5 h-1.5 rounded-full bg-destructive" /> Rupture
                         </span>
                       )}
+                      {product.is_active ? (
+                        <span className="inline-flex items-center gap-1 text-green-600 text-xs font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500" /> Actif
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-muted-foreground text-xs font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground" /> Désactivé
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="flex gap-2">
                     <Button variant="outline" size="sm" asChild className="flex-1">
                       <Link href={`/woofixers/produits/${product.id}`}>Modifier</Link>
                     </Button>
+                    <ToggleProductStatusButton productId={product.id} isActive={product.is_active} />
                     <DeleteProductButton productId={product.id} productName={product.name} />
                   </div>
                 </li>
@@ -116,6 +127,7 @@ export default async function ProduitsPage() {
                   <th className="text-left p-4 font-semibold text-foreground hidden lg:table-cell">Prix</th>
                   <th className="text-left p-4 font-semibold text-foreground hidden lg:table-cell">Badge</th>
                   <th className="text-left p-4 font-semibold text-foreground">Stock</th>
+                  <th className="text-left p-4 font-semibold text-foreground">État</th>
                   <th className="text-right p-4 font-semibold text-foreground">Actions</th>
                 </tr>
               </thead>
@@ -170,11 +182,23 @@ export default async function ProduitsPage() {
                         </span>
                       )}
                     </td>
+                    <td className="p-4">
+                      {product.is_active ? (
+                        <span className="inline-flex items-center gap-1 text-green-600 text-xs font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500" /> Actif
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-muted-foreground text-xs font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground" /> Désactivé
+                        </span>
+                      )}
+                    </td>
                     <td className="p-4 text-right">
                       <div className="flex items-center gap-2 justify-end">
                         <Button variant="outline" size="sm" asChild>
                           <Link href={`/woofixers/produits/${product.id}`}>Modifier</Link>
                         </Button>
+                        <ToggleProductStatusButton productId={product.id} isActive={product.is_active} />
                         <DeleteProductButton productId={product.id} productName={product.name} />
                       </div>
                     </td>
