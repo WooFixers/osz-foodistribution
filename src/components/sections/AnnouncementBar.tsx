@@ -1,48 +1,53 @@
 "use client";
 
-import { Flame, MessageCircle, ArrowRight, Sparkles } from "lucide-react";
+import { Flame, MessageCircle, ArrowRight, Sparkles, ShieldCheck, Clock } from "lucide-react";
 
 export default function AnnouncementBar() {
   const whatsappUrl = `https://wa.me/212670594545?text=${encodeURIComponent(
-    "Bonjour OSZ Food Distribution, je souhaite commander la viande de poulet pour chawarma (offre spéciale)."
+    "Bonjour OSZ Food Distribution, je souhaite des informations sur l'offre Restaurants & Snacks (Steak burger, filet de poulet, viande chawarma)."
   )}`;
 
   return (
     <aside
-      aria-label="Offre promotionnelle exclusive"
-      className="bg-gradient-to-r from-red-900 via-primary-dark to-amber-900 text-white py-3 sm:py-3.5 px-4 shadow-md relative z-50 border-b-2 border-amber-400/40"
+      aria-label="Offre promotionnelle exclusive restaurants et snacks"
+      className="bg-gradient-to-r from-red-950 via-primary-dark to-amber-950 text-white py-2.5 sm:py-3 px-4 shadow-md relative z-50 border-b-2 border-amber-400/40"
     >
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 text-center sm:text-left">
           
           {/* Main Info */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3">
-            <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black px-2.5 py-1 rounded-md text-xs sm:text-sm uppercase tracking-wider shadow-sm animate-pulse">
-              <Flame className="w-4 h-4 text-red-700 fill-red-700" />
-              Offre Spéciale
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-2.5">
+            <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black px-2.5 py-0.5 rounded-md text-xs sm:text-sm uppercase tracking-wider shadow-sm animate-pulse">
+              <Flame className="w-3.5 h-3.5 text-red-700 fill-red-700" />
+              Offre Snacks &amp; Restos
             </span>
 
-            <span className="font-heading font-bold text-white text-sm sm:text-base tracking-wide">
-              Viande de Poulet pour Chawarma :
+            <span className="font-heading font-bold text-white text-xs sm:text-sm tracking-wide">
+              Steak Burger • Filet de Poulet • Viande Chawarma
             </span>
 
-            <span className="inline-flex items-center bg-amber-400 text-slate-950 font-black px-2.5 py-0.5 rounded-md text-xs sm:text-sm uppercase tracking-wide shadow-sm">
-              Prix Imbattable
+            <span className="inline-flex items-center bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-md text-xs uppercase tracking-wide shadow-sm">
+              Prix Imbattables
             </span>
 
-            <span className="hidden lg:inline-flex items-center gap-1 text-amber-200/90 text-xs font-medium bg-white/10 px-2 py-0.5 rounded">
-              <Sparkles className="w-3 h-3 text-amber-300" />
-              Marrakech &amp; Régions
+            <span className="hidden md:inline-flex items-center gap-1 text-amber-200/90 text-xs font-semibold bg-white/10 px-2 py-0.5 rounded">
+              <ShieldCheck className="w-3 h-3 text-amber-300" />
+              Agrément ONSSA
+            </span>
+
+            <span className="hidden xl:inline-flex items-center gap-1 text-emerald-300 text-xs font-semibold bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
+              <Clock className="w-3 h-3 text-emerald-400" />
+              Cde avant 17h → Livré avant 11h
             </span>
           </div>
 
           {/* CTAs */}
-          <div className="flex items-center justify-center gap-2.5 w-full sm:w-auto">
+          <div className="flex items-center justify-center gap-2.5 w-full sm:w-auto shrink-0">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold px-4 py-2 rounded-lg text-xs sm:text-sm transition-all shadow-md hover:shadow-lg"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold px-3.5 py-1.5 rounded-lg text-xs sm:text-sm transition-all shadow-md hover:shadow-lg"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
               <span>Commander sur WhatsApp</span>

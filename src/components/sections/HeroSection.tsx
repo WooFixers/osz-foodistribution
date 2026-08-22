@@ -42,7 +42,7 @@ export const Header = () => {
           </Link>
           <Link href="#offre-speciale" className="text-amber-700 hover:text-amber-800 text-sm lg:text-base font-semibold flex items-center gap-1 transition-colors">
             <Flame className="w-4 h-4 text-red-600 fill-red-600" />
-            Promo Chawarma
+            Offre Snacks &amp; Restos
           </Link>
           <Link href="#contact" className="text-muted-foreground hover:text-foreground text-sm lg:text-base font-medium transition-colors">
             Contact
@@ -110,10 +110,10 @@ export const Header = () => {
               <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5 mb-4">
                 <p className="text-xs font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 mb-1">
                   <Flame className="w-3.5 h-3.5 text-red-600 fill-red-600" />
-                  Offre Chawarma
+                  Offre Snacks &amp; Restaurants
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Viande de poulet fraîche à <strong className="text-primary font-bold">prix imbattable</strong> pour snacks &amp; restaurants.
+                  Steak burger, filet de poulet et viande chawarma à <strong className="text-primary font-bold">prix imbattables</strong> avec agrément ONSSA.
                 </p>
               </div>
 
@@ -152,8 +152,8 @@ export const Header = () => {
                   onClick={() => setMobileOpen(false)}
                   className="px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-semibold flex items-center justify-between"
                 >
-                  <span>Offre Poulet Chawarma</span>
-                  <span className="text-xs font-bold bg-primary text-white px-2 py-0.5 rounded">Prix Imbattable</span>
+                  <span>Offre Snacks &amp; Restos</span>
+                  <span className="text-xs font-bold bg-primary text-white px-2 py-0.5 rounded">Prix Imbattables</span>
                 </Link>
                 <Link
                   href="#contact"

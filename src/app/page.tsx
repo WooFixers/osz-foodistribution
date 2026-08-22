@@ -11,13 +11,13 @@ import Footer from "@/components/sections/FooterSection";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 
 export const metadata: Metadata = {
-  title: "OSZ Food Distribution — Fournisseur de viande & Offre Chawarma à Marrakech",
+  title: "OSZ Food Distribution — Fournisseur Viande Restaurants & Snacks à Marrakech",
   description:
-    "Fournisseur de viande pour restaurants, snacks et hôtels à Marrakech. Offre spéciale : Viande de poulet pour chawarma au meilleur prix garanti. Approvisionnement régulier, qualité garantie.",
+    "Fournisseur de viande pour restaurants, snacks et fast-foods à Marrakech. Offre exclusive restauration : Steak burger pur bœuf, filet de poulet, viande chawarma. Agrément ONSSA, prix imbattables, livraison avant 11h.",
   openGraph: {
-    title: "OSZ Food Distribution — Offre Poulet Chawarma & Viandes au Meilleur Prix Marrakech",
+    title: "OSZ Food Distribution — Offre Restaurants & Snacks à Prix Imbattables Marrakech",
     description:
-      "Distribution de viande à Marrakech. Offre exclusive restauration : Viande de poulet pour chawarma à prix imbattable.",
+      "Distribution de viande à Marrakech pour restaurants et snacks : Steak burger, filet de poulet, viande chawarma. Agrément ONSSA et livraison quotidienne.",
     url: "https://www.osz-foodistribution.ma",
     siteName: "OSZ Food Distribution",
     locale: "fr_MA",
