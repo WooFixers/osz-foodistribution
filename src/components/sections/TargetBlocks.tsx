@@ -52,7 +52,7 @@ export const ProBlock = () => (
             </div>
             <div>
               <p className="font-heading text-3xl font-bold text-primary">15+</p>
-              <p className="text-muted-foreground text-sm">Années d&apos;expérience en distribution viande</p>
+              <p className="text-muted-foreground text-sm">Années d&apos;expérience en distribution de viande</p>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ export const ParticuliersBlock = () => (
             Livraison de viande fraîche à domicile — Marrakech
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-            Commandez votre viande bovine ou votre agneau frais et recevez-le directement à votre domicile à Marrakech. La même qualité que celle servie dans les restaurants et hôtels de la ville, accessible aux particuliers via une simple commande WhatsApp.
+            Commandez votre viande bovine ou votre agneau frais et recevez votre commande directement à votre domicile à Marrakech. La même qualité que celle servie dans les restaurants et hôtels de la ville, accessible aux particuliers via une simple commande WhatsApp.
           </p>
           <ul className="space-y-4 mb-10">
             {[

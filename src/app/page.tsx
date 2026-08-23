@@ -13,7 +13,7 @@ import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 export const metadata: Metadata = {
   title: "OSZ Food Distribution — Fournisseur Viande Restaurants & Snacks à Marrakech",
   description:
-    "Fournisseur de viande pour restaurants, snacks et fast-foods à Marrakech. Offre exclusive restauration : Steak burger pur bœuf, filet de poulet, viande chawarma. Agrément ONSSA, prix imbattables, livraison avant 11h.",
+    "Fournisseur de viande pour restaurants, snacks et fast-foods à Marrakech. Offre exclusive restauration : Steak burger pur bœuf, filet de poulet, viande chawarma. Agrément ONSSA, prix imbattables, livraison avant midi.",
   openGraph: {
     title: "OSZ Food Distribution — Offre Restaurants & Snacks à Prix Imbattables Marrakech",
     description:

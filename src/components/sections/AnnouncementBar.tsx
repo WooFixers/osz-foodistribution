@@ -37,7 +37,7 @@ export default function AnnouncementBar() {
 
             <span className="hidden xl:inline-flex items-center gap-1 text-emerald-300 text-xs font-semibold bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
               <Clock className="w-3 h-3 text-emerald-400" />
-              Cde avant 17h → Livré avant 11h
+              Cde avant 17h → Livré avant midi
             </span>
           </div>
 
@@ -57,7 +57,7 @@ export default function AnnouncementBar() {
               href="#offre-speciale"
               className="hidden md:inline-flex items-center gap-1 text-white/80 hover:text-white text-xs font-medium underline underline-offset-4 transition-colors whitespace-nowrap"
             >
-              Voir détails <ArrowRight className="w-3.5 h-3.5" />
+              Voir les détails <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
 

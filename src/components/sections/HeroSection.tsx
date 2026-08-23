@@ -213,7 +213,7 @@ export const HeroSection = () => (
           Votre distributeur de viande bovine et agneau à Marrakech
         </h1>
         <p className="text-lg text-primary-foreground/80 leading-relaxed mb-10 max-w-lg">
-          Qualité professionnelle, conformité sanitaire ONSSA (Loi 28-07) et livraisons régulières pour restaurants, hôtels, riads et traiteurs. OSZ Food Distribution sert les professionnels de Marrakech depuis plus de 15 ans.
+          Qualité professionnelle, conformité sanitaire ONSSA (Loi 28-07) et livraisons régulières pour restaurants, hôtels, riads et traiteurs. Grâce à notre maîtrise de la qualité et de la découpe professionnelle de la viande, OSZ Food Distribution est votre garantie d&apos;un produit conforme.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <QuoteFormDialog>

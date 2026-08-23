@@ -178,7 +178,7 @@ const LogisticsSection = () => (
         <div className="bg-secondary rounded-lg p-10">
           <h3 className="font-heading text-2xl font-bold text-foreground mb-6">Zones de livraison</h3>
           <div className="space-y-3">
-            {["Marrakech et regions", "Guéliz", "Hivernage", "Palmeraie", "Targa"].map((zone) => (
+            {["Marrakech et régions", "Guéliz", "Hivernage", "Palmeraie", "Targa"].map((zone) => (
               <div key={zone} className="flex items-center gap-3 text-foreground">
                 <BadgeCheck className="w-5 h-5 text-primary shrink-0" />
                 <span className="font-medium">{zone}</span>
@@ -313,7 +313,7 @@ const CTASection = () => (
     <div className="container mx-auto text-center">
       <div className="max-w-2xl mx-auto">
         <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-5">
-          Vous approvisionnez en viande à Marrakech ?
+          Vous approvisionner en viande à Marrakech
         </h2>
         <p className="text-primary-foreground/70 text-lg leading-relaxed mb-10">
           Contactez notre équipe pour discuter de vos besoins en viande bovine et agneau. Nous établissons un devis personnalisé selon vos volumes, votre fréquence de livraison et vos spécifications de découpe.
@@ -387,7 +387,7 @@ const ProFooter = () => (
               { href: "/", label: "Accueil" },
               { href: "/professionnels", label: "Espace Professionnels" },
               { href: "#services", label: "Nos services" },
-              { href: "#qualite", label: "Qualité & HACCP" },
+              { href: "#qualite", label: "Qualité & Conformité ONSSA" },
             ].map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="text-background/60 hover:text-primary transition-colors flex items-center gap-1">

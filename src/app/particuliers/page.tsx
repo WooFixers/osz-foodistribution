@@ -89,7 +89,7 @@ const categories = [
   {
     icon: "🥩", title: "Viande de bœuf & agneau",
     desc: "Entrecôte, filet, côte à l'os, gigot, épaule — notre sélection de viande bovine et d'agneau frais, découpée selon vos préférences.",
-    items: ["Entrecôte de bœuf — 189 MAD/kg", "Gigot d'agneau entier", "Épaule d'agneau", "Agneau entier (mechoui) — prix sur demande"],
+    items: ["Entrecôte de bœuf — 189 MAD/kg", "Gigot d'agneau entier", "Épaule d'agneau", "Agneau entier (méchoui) — prix sur demande"],
     cta: "Commander via WhatsApp",
     ctaHref: "https://wa.me/212670594545",
     ctaExternal: true,
@@ -161,7 +161,7 @@ const CategoriesSection = () => (
 
 /* ─── ADVANTAGES ─── */
 const shopAdvantages = [
-  { icon: Award, title: "Qualité identique aux restaurants", desc: "Le même bœuf et le même agneau servis dans les restaurants et hôtels de Marrakech, maintenant accessible aux particuliers." },
+  { icon: Award, title: "Qualité identique aux restaurants", desc: "Le même bœuf et le même agneau servis dans les restaurants et hôtels de Marrakech, maintenant accessibles aux particuliers." },
   { icon: Leaf, title: "Fraîcheur garantie", desc: "Découpe à la commande, emballage isotherme, livraison réfrigérée. Votre viande arrive dans les meilleures conditions." },
   { icon: Smartphone, title: "Commande simple sur WhatsApp", desc: "Envoyez votre commande au 06 70 59 45 45. Confirmation sous 2h, livraison dans les 48h." },
   { icon: Truck, title: "Livraison sur tout Marrakech", desc: "Guéliz, Hivernage, Palmeraie, Médina, Targa, Route de l'Ourika — nous livrons partout à Marrakech." },

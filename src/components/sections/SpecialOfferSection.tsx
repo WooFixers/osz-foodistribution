@@ -20,7 +20,7 @@ export default function SpecialOfferSection() {
       description:
         "Pur bœuf sélectionné pour une texture tendre et un taux de matière grasse calibré. Tenue parfaite à la cuisson pour vos burgers gourmets et smash burgers.",
       specs: [
-        "Calibrage sur mesure (100g, 120g, 150g, 180g)",
+        "Calibrage sur mesure",
         "Jutosité et caramélisation optimales",
         "Disponible en frais ou surgelé",
       ],
@@ -76,9 +76,9 @@ export default function SpecialOfferSection() {
     },
     {
       icon: Truck,
-      title: "Livraison Avant 11h00",
-      desc: "Livraison le lendemain matin avant 11h00 en véhicule frigorifique avant votre premier service.",
-      highlight: "Livré avant 11h00",
+      title: "Livraison Avant Midi",
+      desc: "Livraison le lendemain matin avant midi en véhicule frigorifique avant votre premier service.",
+      highlight: "Livré avant midi",
     },
   ];
 
@@ -107,7 +107,7 @@ export default function SpecialOfferSection() {
           </h2>
 
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Sécurisez l&apos;approvisionnement de vos 3 produits phares avec des produits rigoureusement sélectionnés, un agrément sanitaire certifié et les prix les plus bas de Marrakech.
+            Sécurisez l&apos;approvisionnement de vos 3 produits phares avec des produits rigoureusement sélectionnés, un agrément sanitaire certifié et des prix favorables.
           </p>
         </div>
 
@@ -193,7 +193,7 @@ export default function SpecialOfferSection() {
                 <Utensils className="w-3.5 h-3.5" /> Pack Restauration Rapide &amp; Traditionnelle
               </div>
               <h3 className="font-heading text-2xl sm:text-3xl font-extrabold leading-snug text-white">
-                Commandez avant 17h, livré demain avant 11h00
+                Commandez avant 17h, livré demain avant midi
               </h3>
               <p className="text-white/80 text-sm sm:text-base leading-relaxed">
                 Testez la qualité de nos steaks burgers, filets de poulet et viande chawarma. Votre partenaire de confiance pour votre réussite : Qualité garantie, Prix Imbattables et produits avec agrément ONSSA.
