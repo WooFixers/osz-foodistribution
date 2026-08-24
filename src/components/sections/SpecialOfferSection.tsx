@@ -15,6 +15,7 @@ export default function SpecialOfferSection() {
       id: "steak-burger",
       title: "Steak Viande Hachée de Bœuf",
       subtitle: "Spécial Burger & Smash",
+      image: "/assets/burger-boeuf.webp",
       tag: "Pur Bœuf 100%",
       tagColor: "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20",
       description:
@@ -29,6 +30,7 @@ export default function SpecialOfferSection() {
       id: "filet-poulet",
       title: "Filet de Poulet Frais",
       subtitle: "Spécial Snacking & Cuisine",
+      image: "/assets/filet-poulet.webp",
       tag: "Volaille Supérieure",
       tagColor: "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/20",
       description:
@@ -43,6 +45,7 @@ export default function SpecialOfferSection() {
       id: "chawarma-poulet",
       title: "Viande Chawarma Poulet",
       subtitle: "Spécial Montage Broche",
+      image: "/assets/shawarm-2a.webp",
       tag: "Rôtisserie & Snack",
       tagColor: "bg-primary/10 text-primary border-primary/20",
       description:
@@ -54,6 +57,11 @@ export default function SpecialOfferSection() {
       ],
     },
   ];
+
+  const getProductWhatsappUrl = (productTitle: string) =>
+    `https://wa.me/212670594545?text=${encodeURIComponent(
+      `Bonjour OSZ Food Distribution, je souhaite recevoir les tarifs et commander pour notre restaurant/snack : ${productTitle}.`
+    )}`;
 
   const guarantees = [
     {
@@ -139,16 +147,29 @@ export default function SpecialOfferSection() {
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-card border-2 border-primary/25 rounded-3xl p-6 sm:p-7 shadow-lg relative overflow-hidden flex flex-col justify-between group hover:border-primary hover:shadow-xl transition-all duration-300"
+              className="bg-card border-2 border-primary/25 rounded-3xl p-5 sm:p-6 shadow-lg relative overflow-hidden flex flex-col justify-between group hover:border-primary hover:shadow-xl transition-all duration-300"
             >
               <div className="space-y-4">
-                <div className="flex items-center justify-between gap-2">
-                  <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${product.tagColor}`}>
-                    {product.tag}
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-md">
-                    En stock
-                  </span>
+                {/* Product Image */}
+                <div className="relative w-full h-48 sm:h-52 rounded-2xl overflow-hidden bg-muted">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-3 left-3">
+                    <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-md bg-background/90 shadow-sm border ${product.tagColor}`}>
+                      {product.tag}
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3">
+                    <span className="text-[11px] font-bold text-white bg-emerald-600/90 backdrop-blur-md px-2.5 py-1 rounded-full shadow-sm">
+                      En stock
+                    </span>
+                  </div>
                 </div>
 
                 <div>
@@ -175,11 +196,23 @@ export default function SpecialOfferSection() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-border/80 flex items-center justify-between">
-                <span className="text-xs font-bold uppercase text-muted-foreground">Tarif pro grossiste</span>
-                <span className="font-heading text-base font-extrabold text-primary bg-primary/10 px-3 py-1 rounded-lg">
-                  Prix Imbattable
-                </span>
+              <div className="mt-6 pt-4 border-t border-border/80 flex flex-col gap-3">
+                <div className="flex items-center justify-center">
+                  <span className="w-full text-center font-heading text-base font-extrabold text-primary bg-primary/10 py-1.5 px-3 rounded-lg border border-primary/15">
+                    Prix Imbattable
+                  </span>
+                </div>
+
+                <Button
+                  size="sm"
+                  className="w-full h-11 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
+                  asChild
+                >
+                  <a href={getProductWhatsappUrl(product.title)} target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    Commander ce produit
+                  </a>
+                </Button>
               </div>
             </div>
           ))}

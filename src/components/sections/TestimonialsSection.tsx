@@ -48,9 +48,9 @@ const TestimonialsSection = () => (
         ))}
       </div>
       <div className="mt-16 flex justify-center gap-12 items-center opacity-40">
-        <span className="font-heading text-2xl font-bold text-foreground">15+ ans</span>
-        <span className="w-px h-8 bg-border" />
         <span className="font-heading text-2xl font-bold text-foreground">500+ clients</span>
+        <span className="w-px h-8 bg-border" />
+        <span className="font-heading text-2xl font-bold text-foreground">100% traçabilité</span>
         <span className="w-px h-8 bg-border hidden sm:block" />
         <span className="font-heading text-2xl font-bold text-foreground hidden sm:block">98% satisfaction</span>
       </div>

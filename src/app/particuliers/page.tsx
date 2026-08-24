@@ -396,7 +396,7 @@ const LocalPresence = () => (
           <p className="text-primary uppercase tracking-[0.25em] text-sm font-semibold mb-3">Présence locale</p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-5">Livraison viande dans tout Marrakech</h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-            Implantés à Marrakech depuis plus de 15 ans, nous connaissons la ville et ses quartiers. Notre zone de livraison couvre Marrakech centre, Guéliz, l&apos;Hivernage, la Palmeraie, Targa et la Route de l&apos;Ourika.
+            Implantés à Marrakech, nous connaissons parfaitement la ville et ses quartiers. Notre zone de livraison couvre Marrakech centre, Guéliz, l&apos;Hivernage, la Palmeraie, Targa et la Route de l&apos;Ourika.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
             Vous n&apos;êtes pas sûr d&apos;être dans notre zone ? Contactez-nous sur WhatsApp — nous vous confirmons la faisabilité en moins de 2 heures.

@@ -15,7 +15,7 @@ export const ProBlock = () => (
             Fournisseur de viande pour restaurants et hôtels à Marrakech
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-            Votre restaurant, hôtel ou riad à Marrakech a besoin d&apos;un fournisseur de viande capable de tenir une qualité constante semaine après semaine. OSZ Food Distribution répond à cette exigence depuis 15 ans, avec des livraisons planifiées, une découpe sur spécification, et un interlocuteur dédié pour vos commandes.
+            Votre restaurant, hôtel ou riad à Marrakech a besoin d&apos;un fournisseur de viande capable de tenir une qualité constante semaine après semaine. OSZ Food Distribution répond à cette exigence avec des livraisons planifiées, une découpe sur spécification, et un interlocuteur dédié pour vos commandes.
           </p>
           <ul className="space-y-4 mb-10">
             {[
@@ -51,8 +51,8 @@ export const ProBlock = () => (
               <p className="text-muted-foreground text-sm">Clients professionnels à Marrakech</p>
             </div>
             <div>
-              <p className="font-heading text-3xl font-bold text-primary">15+</p>
-              <p className="text-muted-foreground text-sm">Années d&apos;expérience en distribution de viande</p>
+              <p className="font-heading text-3xl font-bold text-primary">100%</p>
+              <p className="text-muted-foreground text-sm">Conformité et traçabilité ONSSA</p>
             </div>
           </div>
         </div>

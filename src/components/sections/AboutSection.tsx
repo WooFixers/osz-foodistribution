@@ -14,7 +14,7 @@ const features = [
   {
     icon: Handshake,
     title: "Réseau local Marrakech",
-    desc: "Présents à Marrakech depuis plus de 15 ans, nous connaissons les exigences du marché local et de ses professionnels.",
+    desc: "Implantés au cœur de Marrakech, nous connaissons parfaitement les exigences du marché local et de ses professionnels.",
   },
   {
     icon: Users,

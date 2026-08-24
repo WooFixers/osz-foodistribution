@@ -14,7 +14,7 @@ const Footer = () => (
             </Link>
           </div>
           <p className="text-background/60 text-sm leading-relaxed">
-            Distributeur de viande bovine et agneau frais à Marrakech depuis plus de 15 ans. Approvisionnement professionnel régulier pour restaurants, hôtels, riads et traiteurs.
+            Distributeur de viande bovine et agneau frais à Marrakech. Approvisionnement professionnel régulier pour restaurants, hôtels, riads et traiteurs.
           </p>
         </div>
 

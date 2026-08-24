@@ -113,7 +113,7 @@ const advantages = [
   { icon: Thermometer, title: "Chaîne du froid certifiée", desc: "Transport réfrigéré sous température dirigée (véhicules agréés ONSSA) de notre entrepôt à votre cuisine." },
   { icon: FileSearch, title: "Traçabilité intégrale ONSSA", desc: "Origine, abattoirs agréés au Maroc, estampillage vétérinaire et numéro de lot documentés sur chaque livraison." },
   { icon: ShieldCheck, title: "Conformité Loi 28-07", desc: "Application stricte de la législation marocaine sur la sécurité sanitaire des aliments et autocontrôle permanent." },
-  { icon: Handshake, title: "15 ans d'expertise locale", desc: "Présents à Marrakech depuis 15 ans, nous connaissons les spécificités de la restauration et de l'hôtellerie locales." },
+  { icon: Handshake, title: "Expertise locale", desc: "Implantés à Marrakech, nous connaissons parfaitement les spécificités de la restauration et de l'hôtellerie locales." },
   { icon: Timer, title: "Réactivité", desc: "Votre activité ne peut pas attendre. Nous répondons aux demandes urgentes et nous adaptons à vos pics d'activité saisonniers." },
   { icon: Users, title: "Partenariat long terme", desc: "Nous construisons des relations durables avec nos clients professionnels. 98% de fidélité sur nos comptes actifs." },
 ];
@@ -297,9 +297,9 @@ const ProTestimonialsSection = () => (
         ))}
       </div>
       <div className="mt-16 flex justify-center gap-12 items-center opacity-40">
-        <span className="font-heading text-2xl font-bold text-foreground">15+ ans</span>
-        <span className="w-px h-8 bg-border" />
         <span className="font-heading text-2xl font-bold text-foreground">500+ clients pro</span>
+        <span className="w-px h-8 bg-border" />
+        <span className="font-heading text-2xl font-bold text-foreground">100% traçabilité</span>
         <span className="w-px h-8 bg-border hidden sm:block" />
         <span className="font-heading text-2xl font-bold text-foreground hidden sm:block">98% fidélité</span>
       </div>
