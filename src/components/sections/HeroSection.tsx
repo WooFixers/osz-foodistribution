@@ -113,7 +113,7 @@ export const Header = () => {
                   Offre Snacks &amp; Restaurants
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Steak burger, filet de poulet et viande chawarma à <strong className="text-primary font-bold">prix imbattables</strong> avec agrément ONSSA.
+                  Steak burger, filet de poulet, viande chawarma et merguez de bœuf à <strong className="text-primary font-bold">prix imbattables</strong> avec agrément ONSSA.
                 </p>
               </div>
 

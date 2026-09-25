@@ -7,10 +7,20 @@ import QuoteFormDialog from "@/components/forms/QuoteFormDialog";
 
 export default function SpecialOfferSection() {
   const whatsappUrl = `https://wa.me/212670594545?text=${encodeURIComponent(
-    "Bonjour OSZ Food Distribution, je souhaite recevoir vos tarifs et commander pour notre restaurant/snack (Steak burger, filet de poulet, viande chawarma)."
+    "Bonjour OSZ Food Distribution, je souhaite recevoir vos tarifs et commander pour notre restaurant/snack (Steak burger, filet de poulet, viande chawarma, merguez de bœuf)."
   )}`;
 
-  const products = [
+  const products: Array<{
+    id: string;
+    title: string;
+    subtitle: string;
+    image: string;
+    tag: string;
+    tagColor: string;
+    description: string;
+    specs: string[];
+    minOrderBadge?: string;
+  }> = [
     {
       id: "steak-burger",
       title: "Steak Viande Hachée de Bœuf",
@@ -55,6 +65,22 @@ export default function SpecialOfferSection() {
         "Tenue de cuisson et saveur authentique",
         "Rendement au kilo garanti pour snack pro",
       ],
+    },
+    {
+      id: "merguez-boeuf",
+      title: "Merguez de Bœuf",
+      subtitle: "Spécial Grillades & Sandwiches",
+      image: "/assets/merguez-boeuf.webp",
+      tag: "Pur Bœuf Épicé",
+      tagColor: "bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20",
+      description:
+        "Véritables merguez pur bœuf assaisonnées avec soin. Boyau naturel, équilibre parfait d'épices et excellente tenue à la cuisson sans réduction excessive.",
+      specs: [
+        "Commande minimum : 5 kg",
+        "Conditionné en sachets de 1 kg (usage facile)",
+        "Boyau naturel & assaisonnement traditionnel",
+      ],
+      minOrderBadge: "Min. 5 kg • Sachets 1 kg",
     },
   ];
 
@@ -115,7 +141,7 @@ export default function SpecialOfferSection() {
           </h2>
 
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Sécurisez l&apos;approvisionnement de vos 3 produits phares avec des produits rigoureusement sélectionnés, un agrément sanitaire certifié et des prix favorables.
+            Sécurisez l&apos;approvisionnement de vos 4 produits phares avec des produits rigoureusement sélectionnés, un agrément sanitaire certifié et des prix favorables.
           </p>
         </div>
 
@@ -142,8 +168,8 @@ export default function SpecialOfferSection() {
           ))}
         </div>
 
-        {/* 3 Products Grid */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+        {/* 4 Products Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
           {products.map((product) => (
             <div
               key={product.id}
@@ -157,7 +183,7 @@ export default function SpecialOfferSection() {
                     alt={product.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-3">
@@ -176,9 +202,16 @@ export default function SpecialOfferSection() {
                   <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-1">
                     {product.title}
                   </h3>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wide">
-                    {product.subtitle}
-                  </p>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <p className="text-xs font-semibold text-primary uppercase tracking-wide">
+                      {product.subtitle}
+                    </p>
+                    {product.minOrderBadge && (
+                      <span className="text-[10px] font-bold text-amber-900 dark:text-amber-200 bg-amber-400/20 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                        {product.minOrderBadge}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -229,7 +262,7 @@ export default function SpecialOfferSection() {
                 Commandez avant 17h, livré demain avant midi
               </h3>
               <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-                Testez la qualité de nos steaks burgers, filets de poulet et viande chawarma. Votre partenaire de confiance pour votre réussite : Qualité garantie, Prix Imbattables et produits avec agrément ONSSA.
+                Testez la qualité de nos steaks burgers, filets de poulet, viande chawarma et merguez de bœuf. Votre partenaire de confiance pour votre réussite : Qualité garantie, Prix Imbattables et produits avec agrément ONSSA.
               </p>
             </div>
 
