@@ -7,7 +7,7 @@ import QuoteFormDialog from "@/components/forms/QuoteFormDialog";
 
 export default function SpecialOfferSection() {
   const whatsappUrl = `https://wa.me/212670594545?text=${encodeURIComponent(
-    "Bonjour OSZ Food Distribution, je souhaite recevoir vos tarifs et commander pour notre restaurant/snack (Steak burger, filet de poulet, viande chawarma, merguez de bœuf)."
+    "Bonjour OSZ Food Distribution, je souhaite recevoir vos tarifs et commander pour notre restaurant/snack (Steak burger, filet de poulet, merguez de bœuf)."
   )}`;
 
   const products: Array<{
@@ -49,21 +49,6 @@ export default function SpecialOfferSection() {
         "Découpe nette, prêt à trancher ou mariner",
         "Rendement élevé sans perte d'eau",
         "Approvisionnement frais garanti chaque matin",
-      ],
-    },
-    {
-      id: "chawarma-poulet",
-      title: "Viande Chawarma Poulet",
-      subtitle: "Spécial Montage Broche",
-      image: "/assets/shawarm-2a.webp",
-      tag: "Rôtisserie & Snack",
-      tagColor: "bg-primary/10 text-primary border-primary/20",
-      description:
-        "Découpe artisanale en lamelles spécialement calibrée pour le montage de broches régulières. Cuisson homogène, croustillant à l'extérieur et jus préservé.",
-      specs: [
-        "Épaisseur homogène pour broche stable",
-        "Tenue de cuisson et saveur authentique",
-        "Rendement au kilo garanti pour snack pro",
       ],
     },
     {
@@ -141,7 +126,7 @@ export default function SpecialOfferSection() {
           </h2>
 
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Sécurisez l&apos;approvisionnement de vos 4 produits phares avec des produits rigoureusement sélectionnés, un agrément sanitaire certifié et des prix favorables.
+            Sécurisez l&apos;approvisionnement de vos 3 produits phares avec des produits rigoureusement sélectionnés, un agrément sanitaire certifié et des prix favorables.
           </p>
         </div>
 
@@ -168,8 +153,8 @@ export default function SpecialOfferSection() {
           ))}
         </div>
 
-        {/* 4 Products Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+        {/* 3 Products Grid */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
           {products.map((product) => (
             <div
               key={product.id}
@@ -183,7 +168,7 @@ export default function SpecialOfferSection() {
                     alt={product.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-3">
@@ -262,7 +247,7 @@ export default function SpecialOfferSection() {
                 Commandez avant 17h, livré demain avant midi
               </h3>
               <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-                Testez la qualité de nos steaks burgers, filets de poulet, viande chawarma et merguez de bœuf. Votre partenaire de confiance pour votre réussite : Qualité garantie, Prix Imbattables et produits avec agrément ONSSA.
+                Testez la qualité de nos steaks burgers, filets de poulet et merguez de bœuf. Votre partenaire de confiance pour votre réussite : Qualité garantie, Prix Imbattables et produits avec agrément ONSSA.
               </p>
             </div>
 

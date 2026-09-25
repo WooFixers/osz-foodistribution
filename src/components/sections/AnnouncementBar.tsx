@@ -4,7 +4,7 @@ import { Flame, MessageCircle, ArrowRight, Sparkles, ShieldCheck, Clock } from "
 
 export default function AnnouncementBar() {
   const whatsappUrl = `https://wa.me/212670594545?text=${encodeURIComponent(
-    "Bonjour OSZ Food Distribution, je souhaite des informations sur l'offre Restaurants & Snacks (Steak burger, filet de poulet, viande chawarma, merguez de bœuf)."
+    "Bonjour OSZ Food Distribution, je souhaite des informations sur l'offre Restaurants & Snacks (Steak burger, filet de poulet, merguez de bœuf)."
   )}`;
 
   return (
@@ -23,7 +23,7 @@ export default function AnnouncementBar() {
             </span>
 
             <span className="font-heading font-bold text-white text-xs sm:text-sm tracking-wide">
-              Steak Burger • Filet de Poulet • Viande Chawarma • Merguez de Bœuf
+              Steak Burger • Filet de Poulet • Merguez de Bœuf
             </span>
 
             <span className="inline-flex items-center bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-md text-xs uppercase tracking-wide shadow-sm">

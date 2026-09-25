@@ -28,7 +28,7 @@ O.S.Z Food Distribution fournit quotidiennement les cuisines professionnelles en
 🥩 LE TRIO INDISPENSABLE POUR VOTRE BRIGADE :
 1️⃣ Steaks Viande Hachée Pur Bœuf 100% (Crus) — Calibrage sur-mesure pour vos burgers & smash.
 2️⃣ Filets de Blanc de Poulet Frais Extra (Crus) — Parés nets, zéro déchet pour vos tacos & tenders.
-3️⃣ Viande Poulet Chawarma (Crue) — Découpe calibrée prête pour le montage de broche régulier.
+3️⃣ Merguez de Bœuf (Crues) — Véritables merguez pur bœuf épicées, boyau naturel (Min. 5 kg).
 
 🛡️ NOS ENGAGEMENTS B2B :
 ✅ Agrément Sanitaire ONSSA officiel (Loi 28-07)
@@ -54,7 +54,7 @@ O.S.Z Food Distribution fournit quotidiennement les cuisines professionnelles en
 🥩 المواد الأولية الطرية المتوفرة :
 🍔 ستيك كفتة بقري 100% صافي خضر (Burger & Smash)
 🍗 فيلي دجاج طري ومنقي بلا ضياع (Tacos & Tenders)
-🥙 قطع دجاج شاورما خضرة ومضبوطة لسيخ متوازن ولذيذ
+🌭 صوصيص مرقاز بقري أصيل ومتبل بعناية (Grillades & Sandwiches)
 
 ⭐ مميزات الخدمة مع OSZ :
 ✅ اعتماد صحي ONSSA ومطابقة تامة لمعايير السلامة
